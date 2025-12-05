@@ -2296,7 +2296,7 @@
     },
     {
         "seriesName": "ありふれた職業で世界最強",
-        "totalVolumeCount": 3,
+        "totalVolumeCount": 6,
         "author": "白米良",
         "illustrator": "たかやKi",
         "label": "オーバーラップ文庫",
@@ -2313,47 +2313,17 @@
             {
                 "title": "ありふれた職業で世界最強 3",
                 "code": "し-04-"
-            }
-        ]
-    },
-    {
-        "seriesName": "ありふれた職業で世界最強4",
-        "totalVolumeCount": 1,
-        "author": "白米良",
-        "illustrator": "たかやKi",
-        "label": "オーバーラップ文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
-                "title": "ありふれた職業で世界最強4",
+                "title": "ありふれた職業で世界最強 4",
                 "code": "し-04-"
-            }
-        ]
-    },
-    {
-        "seriesName": "ありふれた職業で世界最強5",
-        "totalVolumeCount": 1,
-        "author": "白米良",
-        "illustrator": "たかやKi",
-        "label": "オーバーラップ文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
-                "title": "ありふれた職業で世界最強5",
+                "title": "ありふれた職業で世界最強 5",
                 "code": "し-04-"
-            }
-        ]
-    },
-    {
-        "seriesName": "ありふれた職業で世界最強6",
-        "totalVolumeCount": 1,
-        "author": "白米良",
-        "illustrator": "たかやKi",
-        "label": "オーバーラップ文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
-                "title": "ありふれた職業で世界最強6",
+                "title": "ありふれた職業で世界最強 6",
                 "code": "し-04-"
             }
         ]

@@ -7,7 +7,7 @@
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "彼女にナイショの恋人ごっこ。",
+                "title": "彼女にナイショの恋人ごっこ。 1",
                 "code": "あ - 10 / 4 - 1"
             }
         ],
@@ -21,7 +21,7 @@
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "SNSで超人気のコスプレイヤー、教室で見せる内気な素顔もかわいい",
+                "title": "SNSで超人気のコスプレイヤー、教室で見せる内気な素顔もかわいい 1",
                 "code": "あ - 14 / 2 - 1"
             }
         ],
@@ -29,7 +29,35 @@
     },
     {
         "seriesName": "継母の連れ子が元カノだった",
-        "totalVolumeCount": 13,
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
+            {
+                "title": "継母の連れ子が元カノだった 1",
+                "code": "か - 12 / 1 - 1"
+            }
+        ]
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった2",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
+            {
+                "title": "継母の連れ子が元カノだった2",
+                "code": "か - 12 / 1 - 2"
+            }
+        ]
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった3",
+        "totalVolumeCount": 1,
         "author": "紙城鏡介",
         "illustrator": "たかやKi",
         "label": "角川スニーカー文庫",
@@ -37,53 +65,144 @@
             {
                 "title": "継母の連れ子が元カノだった3",
                 "code": "か - 12 / 1 - 3"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった4",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった4",
                 "code": "か - 12 / 1 - 4"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった5",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった5",
                 "code": "か - 12 / 1 - 5"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった6",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった6",
                 "code": "か - 12 / 1 - 7"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった7",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった7",
                 "code": "か - 12 / 1 - 8"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった8",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった8",
                 "code": "か - 12 / 1 - 9"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった9",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった9",
                 "code": "か - 12 / 1 - 10"
             }
         ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった10",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [],
         "unownedVolumes": [
-            {
-                "title": "継母の連れ子が元カノだった",
-                "code": "か - 12 / 1 - 1"
-            },
-            {
-                "title": "継母の連れ子が元カノだった2",
-                "code": "か - 12 / 1 - 2"
-            },
             {
                 "title": "継母の連れ子が元カノだった10",
                 "code": "か - 12 / 1 - 11"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった11",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった11",
                 "code": "か - 12 / 1 - 12"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった12",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった12",
                 "code": "か - 12 / 1 - 13"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "継母の連れ子が元カノだった13",
+        "totalVolumeCount": 1,
+        "author": "紙城鏡介",
+        "illustrator": "たかやKi",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "継母の連れ子が元カノだった13",
                 "code": "か - 12 / 1 - 14"
@@ -98,7 +217,7 @@
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "路地裏で拾った女の子がバッドエンド後の\n 乙女ゲームのヒロインだった件",
+                "title": "路地裏で拾った女の子がバッドエンド後の\n 乙女ゲームのヒロインだった件 1",
                 "code": "か - 16 / 1 - 1"
             }
         ],
@@ -112,21 +231,21 @@
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "あなたを諦めきれない元許嫁じゃダメですか?1",
+                "title": "あなたを諦めきれない元許嫁じゃダメですか? 1",
                 "code": "さ - 3 / 2 - 1"
             }
         ],
         "unownedVolumes": [
             {
-                "title": "あなたを諦めきれない元許嫁じゃダメですか?2",
+                "title": "あなたを諦めきれない元許嫁じゃダメですか? 2",
                 "code": "さ - 3 / 2 - 2"
             },
             {
-                "title": "あなたを諦めきれない元許嫁じゃダメですか?3",
+                "title": "あなたを諦めきれない元許嫁じゃダメですか? 3",
                 "code": "さ - 3 / 2 - 3"
             },
             {
-                "title": "あなたを諦めきれない元許嫁じゃダメですか?4",
+                "title": "あなたを諦めきれない元許嫁じゃダメですか? 4",
                 "code": "さ - 3 / 2 - 4"
             }
         ]
@@ -249,7 +368,7 @@
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "喋らない来栖さん、心の中はスキでいっぱい。",
+                "title": "喋らない来栖さん、心の中はスキでいっぱい。 1",
                 "code": "し - 7 / 2 - 1"
             },
             {
@@ -272,7 +391,7 @@
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "クラスで2番目に可愛い女の子と友だちになった",
+                "title": "クラスで2番目に可愛い女の子と友だちになった 1",
                 "code": "た - 13 / 2 - 1"
             },
             {
@@ -319,7 +438,7 @@
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "男子だと思っていた幼馴染との新婚生活がうまくいきすぎる件について",
+                "title": "男子だと思っていた幼馴染との新婚生活がうまくいきすぎる件について 1",
                 "code": "は - 2 / 2 - 1"
             },
             {
@@ -379,19 +498,39 @@
     },
     {
         "seriesName": "地下鉄で美少女を守った俺、名乗らず去ったら全国で英雄扱いされました。",
-        "totalVolumeCount": 3,
+        "totalVolumeCount": 1,
         "author": "水戸前カルヤ",
         "illustrator": "ひげ猫",
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "地下鉄で美少女を守った俺、名乗らず去ったら全国で英雄扱いされました。",
+                "title": "地下鉄で美少女を守った俺、名乗らず去ったら全国で英雄扱いされました。 1",
                 "code": "み - 13 / 1 - 1"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "地下鉄で美少女を守った俺、名乗らず去ったら全国で英雄扱いされました。2",
+        "totalVolumeCount": 1,
+        "author": "水戸前カルヤ",
+        "illustrator": "ひげ猫",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [
             {
                 "title": "地下鉄で美少女を守った俺、名乗らず去ったら全国で英雄扱いされました。2",
                 "code": "み - 13 / 1 - 2"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "地下鉄で美少女を守った俺、名乗らず去ったら全国で英雄扱いされました。3",
+        "totalVolumeCount": 1,
+        "author": "水戸前カルヤ",
+        "illustrator": "ひげ猫",
+        "label": "角川スニーカー文庫",
+        "ownedVolumes": [
             {
                 "title": "地下鉄で美少女を守った俺、名乗らず去ったら全国で英雄扱いされました。3",
                 "code": "み - 13 / 1 - 3"
@@ -407,7 +546,7 @@
         "label": "角川スニーカー文庫",
         "ownedVolumes": [
             {
-                "title": "なぜかS級美少女達の話題に俺が上がる件",
+                "title": "なぜかS級美少女達の話題に俺が上がる件 1",
                 "code": "わ - 1 / 1 - 1"
             },
             {
@@ -427,8 +566,8 @@
         ]
     },
     {
-        "seriesName": "リコリス・リコイル",
-        "totalVolumeCount": 2,
+        "seriesName": "リコリス・リコイル Ordinary days",
+        "totalVolumeCount": 1,
         "author": "アサウラ",
         "illustrator": "いみぎむる",
         "label": "電撃文庫",
@@ -438,6 +577,15 @@
                 "code": "あ-57-2"
             }
         ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "リコリス・リコイル Recovery days",
+        "totalVolumeCount": 1,
+        "author": "アサウラ",
+        "illustrator": "いみぎむる",
+        "label": "電撃文庫",
+        "ownedVolumes": [],
         "unownedVolumes": [
             {
                 "title": "リコリス・リコイル Recovery days",
@@ -474,7 +622,7 @@
     },
     {
         "seriesName": "安達としまむら",
-        "totalVolumeCount": 20,
+        "totalVolumeCount": 14,
         "author": "入間人間",
         "illustrator": "のん",
         "label": "電撃文庫",
@@ -526,10 +674,6 @@
                 "code": "い-9-37"
             },
             {
-                "title": "安達としまむら SS",
-                "code": "い-9-38"
-            },
-            {
                 "title": "安達としまむら 99.9",
                 "code": "い-9-39"
             },
@@ -538,12 +682,36 @@
                 "code": "い-9-40"
             },
             {
-                "title": "安達としまむら SS2",
-                "code": "い-9-41"
-            },
-            {
                 "title": "安達としまむら 13",
                 "code": "い-9-42"
+            }
+        ]
+    },
+    {
+        "seriesName": "安達としまむら SS",
+        "totalVolumeCount": 1,
+        "author": "入間人間",
+        "illustrator": "のん",
+        "label": "電撃文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
+            {
+                "title": "安達としまむら SS",
+                "code": "い-9-38"
+            }
+        ]
+    },
+    {
+        "seriesName": "安達としまむら SS2",
+        "totalVolumeCount": 1,
+        "author": "入間人間",
+        "illustrator": "のん",
+        "label": "電撃文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
+            {
+                "title": "安達としまむら SS2",
+                "code": "い-9-41"
             }
         ]
     },
@@ -796,9 +964,11 @@
         "label": "GA文庫",
         "ownedVolumes": [
             {
-                "title": "『ずっと友達でいてね』と言っていた女友達が友達じゃなくなるまで",
+                "title": "『ずっと友達でいてね』と言っていた女友達が友達じゃなくなるまで 1",
                 "code": "い-08-03"
-            },
+            }
+        ],
+        "unownedVolumes": [
             {
                 "title": "『ずっと友達でいてね』と言っていた女友達が友達じゃなくなるまで 2",
                 "code": "い-08-04"
@@ -807,8 +977,7 @@
                 "title": "『ずっと友達でいてね』と言っていた女友達が友達じゃなくなるまで 3",
                 "code": "い-08-05"
             }
-        ],
-        "unownedVolumes": []
+        ]
     },
     {
         "seriesName": "痴漢されそうになっているS級美少女を助けたら隣の席の幼馴染だった",
@@ -824,7 +993,7 @@
         ],
         "unownedVolumes": [
             {
-                "title": "痴漢されそうになっているS級美少女を助けたら隣の席の幼馴染だった",
+                "title": "痴漢されそうになっているS級美少女を助けたら隣の席の幼馴染だった 1",
                 "code": "け-02-06"
             },
             {
@@ -855,7 +1024,7 @@
     },
     {
         "seriesName": "お隣の天使様にいつの間にか駄目人間にされていた件",
-        "totalVolumeCount": 16,
+        "totalVolumeCount": 15,
         "author": "佐伯さん",
         "illustrator": "はねこと",
         "label": "GA文庫",
@@ -932,7 +1101,7 @@
         "label": "GA文庫",
         "ownedVolumes": [
             {
-                "title": "家事代行のアルバイトを始めたら学園一の美少女の家族に気に入られちゃいました",
+                "title": "家事代行のアルバイトを始めたら学園一の美少女の家族に気に入られちゃいました 1",
                 "code": "し-14-01"
             },
             {
@@ -1045,7 +1214,7 @@
         "label": "MF文庫J",
         "ownedVolumes": [
             {
-                "title": "ベノム 求愛性少女症候群",
+                "title": "ベノム 求愛性少女症候群 1",
                 "code": "し-08-03"
             }
         ],
@@ -1070,7 +1239,7 @@
     },
     {
         "seriesName": "可愛ければ変態でも好きになってくれますか?",
-        "totalVolumeCount": 15,
+        "totalVolumeCount": 14,
         "author": "花間燈",
         "illustrator": "sune",
         "label": "MF文庫J",
@@ -1132,7 +1301,17 @@
             {
                 "title": "可愛ければ変態でも好きになってくれますか? 14",
                 "code": "は-07-18"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "可愛ければ変態でも好きになってくれますか? アートワークス",
+        "totalVolumeCount": 1,
+        "author": "花間燈",
+        "illustrator": "sune",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "可愛ければ変態でも好きになってくれますか? アートワークス",
                 "code": "は-07-19"
@@ -1140,8 +1319,8 @@
         ]
     },
     {
-        "seriesName": "義妹生活",
-        "totalVolumeCount": 15,
+        "seriesName": "義妹生活1",
+        "totalVolumeCount": 1,
         "author": "三河ごーすと",
         "illustrator": "Hiten",
         "label": "MF文庫J",
@@ -1149,61 +1328,200 @@
             {
                 "title": "義妹生活1",
                 "code": "み-10-16"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "義妹生活2",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [
             {
                 "title": "義妹生活2",
                 "code": "み-10-17"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "義妹生活3",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [
             {
                 "title": "義妹生活3",
                 "code": "み-10-18"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "義妹生活4",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [
             {
                 "title": "義妹生活4",
                 "code": "み-10-20"
             }
         ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "義妹生活5",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
         "unownedVolumes": [
             {
                 "title": "義妹生活5",
                 "code": "み-10-21"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活6",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活6",
                 "code": "み-10-22"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活7",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活7",
                 "code": "み-10-23"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活8",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活8",
                 "code": "み-10-24"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活9",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活9",
                 "code": "み-10-25"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活10",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活10",
                 "code": "み-10-26"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活11",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活11",
                 "code": "み-10-27"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活12",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活12",
                 "code": "み-10-28"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活13",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活13",
                 "code": "み-10-29"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活14",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活14",
                 "code": "み-10-30"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "義妹生活15",
+        "totalVolumeCount": 1,
+        "author": "三河ごーすと",
+        "illustrator": "Hiten",
+        "label": "MF文庫J",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "義妹生活15",
                 "code": "み-10-31"
@@ -1218,7 +1536,7 @@
         "label": "MF文庫J",
         "ownedVolumes": [
             {
-                "title": "無口な俺が深夜に通話しているのは、\n クラスで1番美人な優等生でした",
+                "title": "無口な俺が深夜に通話しているのは、\n クラスで1番美人な優等生でした 1",
                 "code": "ろ-01-03"
             }
         ],
@@ -1226,7 +1544,7 @@
     },
     {
         "seriesName": "アサシンズプライド",
-        "totalVolumeCount": 15,
+        "totalVolumeCount": 13,
         "author": "天城ケイ",
         "illustrator": "ニノモトニノ",
         "label": "ファンタジア文庫",
@@ -1262,10 +1580,6 @@
                 "code": "あ-11 / 1-7"
             },
             {
-                "title": "アサシンズプライド Secret Garden",
-                "code": "あ-11 / 1-8"
-            },
-            {
                 "title": "アサシンズプライド 8 暗殺教師と幻月革命",
                 "code": "あ-11 / 1-9"
             },
@@ -1282,16 +1596,30 @@
                 "code": "あ-11 / 1-12"
             },
             {
-                "title": "アサシンズプライド Secret Garden 2",
-                "code": "あ-11 / 1-13"
-            },
-            {
                 "title": "アサシンズプライド 12 暗殺教師と薄明星火",
                 "code": "あ-11 / 1-14"
             },
             {
                 "title": "アサシンズプライド 13 暗殺教師と廻天導地",
                 "code": "あ-11 / 1-15"
+            }
+        ]
+    },
+    {
+        "seriesName": "アサシンズプライド Secret Garden",
+        "totalVolumeCount": 2,
+        "author": "天城ケイ",
+        "illustrator": "ニノモトニノ",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
+            {
+                "title": "アサシンズプライド Secret Garden",
+                "code": "あ-11 / 1-8"
+            },
+            {
+                "title": "アサシンズプライド Secret Garden 2",
+                "code": "あ-11 / 1-13"
             }
         ]
     },
@@ -1322,7 +1650,7 @@
         "label": "ファンタジア文庫",
         "ownedVolumes": [
             {
-                "title": "機械音痴な幼馴染が我が家でリモート授業を受けているのは、ここだけの秘密。",
+                "title": "機械音痴な幼馴染が我が家でリモート授業を受けているのは、ここだけの秘密。 1",
                 "code": "あ-18 / 3-1"
             }
         ],
@@ -1342,7 +1670,7 @@
         ],
         "unownedVolumes": [
             {
-                "title": "コンビニ強盗から助けた地味店員が、\n 同じクラスのうぶで可愛いギャルだった",
+                "title": "コンビニ強盗から助けた地味店員が、\n 同じクラスのうぶで可愛いギャルだった 1",
                 "code": "あ-28 / 1-1"
             },
             {
@@ -1436,7 +1764,7 @@
         "label": "ファンタジア文庫",
         "ownedVolumes": [
             {
-                "title": "性別不詳VTuberたちがオフ会したら\n お例外全員女子だった",
+                "title": "性別不詳VTuberたちがオフ会したら\n お例外全員女子だった 1",
                 "code": "さ-15 / 1-1"
             }
         ],
@@ -1487,7 +1815,7 @@
     },
     {
         "seriesName": "王様のプロポーズ",
-        "totalVolumeCount": 9,
+        "totalVolumeCount": 6,
         "author": "橘公司",
         "illustrator": "つなこ",
         "label": "ファンタジア文庫",
@@ -1515,20 +1843,50 @@
                 "code": "た-4 / 7-5"
             },
             {
+                "title": "王様のプロポーズ 1st Bride",
+                "code": "た-4 / 7-9"
+            }
+        ]
+    },
+    {
+        "seriesName": "王様のプロポーズ６ 銀灰の妖精",
+        "totalVolumeCount": 1,
+        "author": "橘公司",
+        "illustrator": "つなこ",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
+            {
                 "title": "王様のプロポーズ６ 銀灰の妖精",
                 "code": "た-4 / 7-6"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "王様のプロポーズ７ 烏黒の従者",
+        "totalVolumeCount": 1,
+        "author": "橘公司",
+        "illustrator": "つなこ",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "王様のプロポーズ７ 烏黒の従者",
                 "code": "た-4 / 7-7"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "王様のプロポーズ８ 薔薇の使徒",
+        "totalVolumeCount": 1,
+        "author": "橘公司",
+        "illustrator": "つなこ",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "王様のプロポーズ８ 薔薇の使徒",
                 "code": "た-4 / 7-8"
-            },
-            {
-                "title": "王様のプロポーズ 1st Bride",
-                "code": "た-4 / 7-9"
             }
         ]
     },
@@ -1540,7 +1898,7 @@
         "label": "ファンタジア文庫",
         "ownedVolumes": [
             {
-                "title": "保健室のオトナな先輩、俺の前ではすぐデレる",
+                "title": "保健室のオトナな先輩、俺の前ではすぐデレる 1",
                 "code": "た-12 / 4-1"
             },
             {
@@ -1558,15 +1916,15 @@
         "label": "ファンタジア文庫",
         "ownedVolumes": [
             {
-                "title": "俺に義妹ができた後の実妹の変化がこちら",
+                "title": "俺に義妹ができた後の実妹の変化がこちら 1",
                 "code": "た-19 / 1-1"
             }
         ],
         "unownedVolumes": []
     },
     {
-        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。",
-        "totalVolumeCount": 10,
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。1",
+        "totalVolumeCount": 1,
         "author": "長岡マキ子",
         "illustrator": "magako",
         "label": "ファンタジア文庫",
@@ -1574,41 +1932,130 @@
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。1",
                 "code": "な-2 / 6-1"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。2",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。2",
                 "code": "な-2 / 6-2"
             }
         ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。3",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
         "unownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。3",
                 "code": "な-2 / 6-3"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。4",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。4",
                 "code": "な-2 / 6-4"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。5",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。5",
                 "code": "な-2 / 6-5"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。6",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。6",
                 "code": "な-2 / 6-6"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。7",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。7",
                 "code": "な-2 / 6-7"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。8",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。8",
                 "code": "な-2 / 6-8"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。9",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。9",
                 "code": "な-2 / 6-9"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。10",
+        "totalVolumeCount": 1,
+        "author": "長岡マキ子",
+        "illustrator": "magako",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。10",
                 "code": "な-2 / 6-10"
@@ -1629,7 +2076,7 @@
         ],
         "unownedVolumes": [
             {
-                "title": "貴族令嬢。俺にだけなつく",
+                "title": "貴族令嬢。俺にだけなつく 1",
                 "code": "な-12 / 2-1"
             },
             {
@@ -1654,7 +2101,7 @@
         "label": "ファンタジア文庫",
         "ownedVolumes": [
             {
-                "title": "クラスの優等生を『妹』にする約束をした。\n どうやらいっぱい甘えたいらしい。",
+                "title": "クラスの優等生を『妹』にする約束をした。\n どうやらいっぱい甘えたいらしい。 1",
                 "code": "ひ- / 5-1"
             }
         ],
@@ -1666,8 +2113,8 @@
         ]
     },
     {
-        "seriesName": "ネトゲの嫁が人気アイドルだった",
-        "totalVolumeCount": 4,
+        "seriesName": "ネトゲの嫁が人気アイドルだった 1 \n ~クール系の彼女は現実でも嫁のつもりでいる~",
+        "totalVolumeCount": 1,
         "author": "あボーン",
         "illustrator": "館田ダン",
         "label": "オーバーラップ文庫",
@@ -1675,26 +2122,55 @@
             {
                 "title": "ネトゲの嫁が人気アイドルだった 1 \n ~クール系の彼女は現実でも嫁のつもりでいる~",
                 "code": "あ-14-01"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "ネトゲの嫁が人気アイドルだった 2 \n ~クール系の彼女は現実でも嫁のつもりでいる~",
+        "totalVolumeCount": 1,
+        "author": "あボーン",
+        "illustrator": "館田ダン",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [
             {
                 "title": "ネトゲの嫁が人気アイドルだった 2 \n ~クール系の彼女は現実でも嫁のつもりでいる~",
                 "code": "あ-14-02"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "ネトゲの嫁が人気アイドルだった 3\n ~クール系の彼女は現実でも嫁のつもりでいる~",
+        "totalVolumeCount": 1,
+        "author": "あボーン",
+        "illustrator": "館田ダン",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [
             {
-                "title": "ネトゲの嫁が人気アイドルだった3\n ~クール系の彼女は現実でも嫁のつもりでいる~",
+                "title": "ネトゲの嫁が人気アイドルだった 3\n ~クール系の彼女は現実でも嫁のつもりでいる~",
                 "code": "あ-14-03"
             }
         ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "ネトゲの嫁が人気アイドルだった 4\n ~クール系の彼女は現実でも嫁のつもりでいる~",
+        "totalVolumeCount": 1,
+        "author": "あボーン",
+        "illustrator": "館田ダン",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [],
         "unownedVolumes": [
             {
-                "title": "ネトゲの嫁が人気アイドルだった4\n ~クール系の彼女は現実でも嫁のつもりでいる~",
+                "title": "ネトゲの嫁が人気アイドルだった 4\n ~クール系の彼女は現実でも嫁のつもりでいる~",
                 "code": "あ-14-04"
             }
         ]
     },
     {
-        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら",
-        "totalVolumeCount": 8,
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 1 \n 腹ペコ美少女との半同棲生活が始まりました",
+        "totalVolumeCount": 1,
         "author": "岸本和葉",
         "illustrator": "みわべさくら",
         "label": "オーバーラップ文庫",
@@ -1702,33 +2178,102 @@
             {
                 "title": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 1 \n 腹ペコ美少女との半同棲生活が始まりました",
                 "code": "き-09-01"
-            },
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 2 \n 国民的美少女と夏の思い出を作ることになりました",
+        "totalVolumeCount": 1,
+        "author": "岸本和葉",
+        "illustrator": "みわべさくら",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [
             {
                 "title": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 2 \n 国民的美少女と夏の思い出を作ることになりました",
                 "code": "き-09-02"
             }
         ],
+        "unownedVolumes": []
+    },
+    {
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 3 \n 素直可愛い美少女との文化祭が始まります",
+        "totalVolumeCount": 1,
+        "author": "岸本和葉",
+        "illustrator": "みわべさくら",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [],
         "unownedVolumes": [
             {
                 "title": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 3 \n 素直可愛い美少女との文化祭が始まります",
                 "code": "き-09-03"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 4 \n 美少女アイドルたちとの同棲生活が始まるようです",
+        "totalVolumeCount": 1,
+        "author": "岸本和葉",
+        "illustrator": "みわべさくら",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 4 \n 美少女アイドルたちとの同棲生活が始まるようです",
                 "code": "き-09-04"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 5 \n 美少女アイドルたちとの同棲生活が始まるようです",
+        "totalVolumeCount": 1,
+        "author": "岸本和葉",
+        "illustrator": "みわべさくら",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 5 \n 美少女アイドルたちとの同棲生活が始まるようです",
                 "code": "き-09-05"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 6 \n 美少女アイドルたちとの同棲生活が始まるようです",
+        "totalVolumeCount": 1,
+        "author": "岸本和葉",
+        "illustrator": "みわべさくら",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 6 \n 美少女アイドルたちとの同棲生活が始まるようです",
                 "code": "き-09-06"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 7 \n 美少女アイドルたちとの同棲生活が始まるようです",
+        "totalVolumeCount": 1,
+        "author": "岸本和葉",
+        "illustrator": "みわべさくら",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 7 \n 美少女アイドルたちとの同棲生活が始まるようです",
                 "code": "き-09-07"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 8 \n 美少女アイドルたちとの同棲生活が始まるようです",
+        "totalVolumeCount": 1,
+        "author": "岸本和葉",
+        "illustrator": "みわべさくら",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
                 "title": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら 8 \n 美少女アイドルたちとの同棲生活が始まるようです",
                 "code": "き-09-08"
@@ -1736,14 +2281,14 @@
         ]
     },
     {
-        "seriesName": "幼馴染たちが人気アイドルになった\n  ～甘々な彼女たちは俺に貢いでくれている～",
+        "seriesName": "幼馴染たちが人気アイドルになった 1\n  ～甘々な彼女たちは俺に貢いでくれている～",
         "totalVolumeCount": 1,
         "author": "くろねこどらごん",
         "illustrator": "ものと",
         "label": "オーバーラップ文庫",
         "ownedVolumes": [
             {
-                "title": "幼馴染たちが人気アイドルになった\n  ～甘々な彼女たちは俺に貢いでくれている～",
+                "title": "幼馴染たちが人気アイドルになった 1\n  ～甘々な彼女たちは俺に貢いでくれている～",
                 "code": "く-08-01"
             }
         ],
@@ -1751,70 +2296,80 @@
     },
     {
         "seriesName": "ありふれた職業で世界最強",
-        "totalVolumeCount": 14,
+        "totalVolumeCount": 13,
         "author": "白米良",
         "illustrator": "たかやKi",
         "label": "オーバーラップ文庫",
         "ownedVolumes": [
             {
-                "title": "ありふれた職業で世界最強9",
+                "title": "ありふれた職業で世界最強 9",
                 "code": "し-04-13"
             },
             {
-                "title": "ありふれた職業で世界最強10",
+                "title": "ありふれた職業で世界最強 10",
                 "code": "し-04-15"
+            }
+        ],
+        "unownedVolumes": [
+            {
+                "title": "ありふれた職業で世界最強 1",
+                "code": "し-04-"
             },
+            {
+                "title": "ありふれた職業で世界最強 2",
+                "code": "し-04-"
+            },
+            {
+                "title": "ありふれた職業で世界最強 3",
+                "code": "し-04-"
+            },
+            {
+                "title": "ありふれた職業で世界最強 4",
+                "code": "し-04-"
+            },
+            {
+                "title": "ありふれた職業で世界最強 5",
+                "code": "し-04-"
+            },
+            {
+                "title": "ありふれた職業で世界最強 6",
+                "code": "し-04-"
+            },
+            {
+                "title": "ありふれた職業で世界最強 7",
+                "code": "し-04-"
+            },
+            {
+                "title": "ありふれた職業で世界最強 8",
+                "code": "し-04-"
+            },
+            {
+                "title": "ありふれた職業で世界最強 11",
+                "code": "し-04-16"
+            },
+            {
+                "title": "ありふれた職業で世界最強 12",
+                "code": "し-04-18"
+            },
+            {
+                "title": "ありふれた職業で世界最強 13",
+                "code": "し-04-19"
+            }
+        ]
+    },
+    {
+        "seriesName": "ありふれた職業で世界最強 小篇集",
+        "totalVolumeCount": 1,
+        "author": "白米良",
+        "illustrator": "たかやKi",
+        "label": "オーバーラップ文庫",
+        "ownedVolumes": [
             {
                 "title": "ありふれた職業で世界最強 小篇集",
                 "code": "し-04-17"
             }
         ],
-        "unownedVolumes": [
-            {
-                "title": "ありふれた職業で世界最強",
-                "code": "し-04-"
-            },
-            {
-                "title": "ありふれた職業で世界最強2",
-                "code": "し-04-"
-            },
-            {
-                "title": "ありふれた職業で世界最強3",
-                "code": "し-04-"
-            },
-            {
-                "title": "ありふれた職業で世界最強4",
-                "code": "し-04-"
-            },
-            {
-                "title": "ありふれた職業で世界最強5",
-                "code": "し-04-"
-            },
-            {
-                "title": "ありふれた職業で世界最強6",
-                "code": "し-04-"
-            },
-            {
-                "title": "ありふれた職業で世界最強7",
-                "code": "し-04-"
-            },
-            {
-                "title": "ありふれた職業で世界最強8",
-                "code": "し-04-"
-            },
-            {
-                "title": "ありふれた職業で世界最強11",
-                "code": "し-04-16"
-            },
-            {
-                "title": "ありふれた職業で世界最強12",
-                "code": "し-04-18"
-            },
-            {
-                "title": "ありふれた職業で世界最強13",
-                "code": "し-04-19"
-            }
-        ]
+        "unownedVolumes": []
     },
     {
         "seriesName": "アズールレーン ~綾波、ケッコンします~",
@@ -1883,7 +2438,7 @@
         "label": "ファミ通文庫",
         "ownedVolumes": [
             {
-                "title": "偶然助けた美少女がなぜか俺に懐いてしまった件について",
+                "title": "偶然助けた美少女がなぜか俺に懐いてしまった件について 1",
                 "code": "さ10 / 1-1"
             },
             {
@@ -1899,7 +2454,12 @@
         "author": "軽井広",
         "illustrator": "pon",
         "label": "ブレイブ文庫",
-        "ownedVolumes": [],
+        "ownedVolumes": [
+            {
+                "title": "北欧美少女のクラスメイトが、婚約者になったら\n デレデレの甘々になってしまった件について 1",
+                "code": "か-02-01"
+            }
+        ],
         "unownedVolumes": [
             {
                 "title": "北欧美少女のクラスメイトが、婚約者になったら\n デレデレの甘々になってしまった件について 2",

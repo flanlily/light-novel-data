@@ -1598,24 +1598,30 @@
         ]
     },
     {
-        "seriesName": "王様のプロポーズ",
-        "totalVolumeCount": 3,
+        "seriesName": "王様のプロポーズ 4\n黄金の神子",
+        "totalVolumeCount": 1,
         "author": "橘公司",
         "illustrator": "つなこ",
         "label": "ファンタジア文庫",
         "ownedVolumes": [],
         "unownedVolumes": [
             {
-                "title": "王様のプロポーズ 4 黄金の神子",
+                "title": "王様のプロポーズ 4\n黄金の神子",
                 "code": "た-4 / 7-4"
-            },
+            }
+        ]
+    },
+    {
+        "seriesName": "王様のプロポーズ 5\n真赭の賢者",
+        "totalVolumeCount": 1,
+        "author": "橘公司",
+        "illustrator": "つなこ",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
             {
-                "title": "王様のプロポーズ 5 真赭の賢者",
+                "title": "王様のプロポーズ 5\n真赭の賢者",
                 "code": "た-4 / 7-5"
-            },
-            {
-                "title": "王様のプロポーズ 1st Bride",
-                "code": "た-4 / 7-9"
             }
         ]
     },
@@ -1658,6 +1664,20 @@
             {
                 "title": "王様のプロポーズ８ 薔薇の使徒",
                 "code": "た-4 / 7-8"
+            }
+        ]
+    },
+    {
+        "seriesName": "王様のプロポーズ",
+        "totalVolumeCount": 1,
+        "author": "橘公司",
+        "illustrator": "つなこ",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
+            {
+                "title": "王様のプロポーズ 1st Bride",
+                "code": "た-4 / 7-9"
             }
         ]
     },

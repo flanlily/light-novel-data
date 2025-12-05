@@ -1339,8 +1339,22 @@
         "unownedVolumes": []
     },
     {
+        "seriesName": "コンビニ強盗から助けた地味店員が、 同じクラスのうぶで可愛いギャルだった",
+        "totalVolumeCount": 1,
+        "author": "あボーン",
+        "illustrator": "なかむら",
+        "label": "ファンタジア文庫",
+        "ownedVolumes": [],
+        "unownedVolumes": [
+            {
+                "title": "コンビニ強盗から助けた地味店員が、\n同じクラスのうぶで可愛いギャルだった 1",
+                "code": "あ-28 / 1-1"
+            }
+        ]
+    },
+    {
         "seriesName": "コンビニ強盗から助けた地味店員が、  同じクラスのうぶで可愛いギャルだった",
-        "totalVolumeCount": 3,
+        "totalVolumeCount": 2,
         "author": "あボーン",
         "illustrator": "なかむら",
         "label": "ファンタジア文庫",
@@ -1351,10 +1365,6 @@
             }
         ],
         "unownedVolumes": [
-            {
-                "title": "コンビニ強盗から助けた地味店員が、\n 同じクラスのうぶで可愛いギャルだった 1",
-                "code": "あ-28 / 1-1"
-            },
             {
                 "title": "コンビニ強盗から助けた地味店員が、\n 同じクラスのうぶで可愛いギャルだった 3",
                 "code": "あ-28 / 1-3"

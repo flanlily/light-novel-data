@@ -1236,7 +1236,7 @@
     },
     {
         "seriesName": "アサシンズプライド",
-        "totalVolumeCount": 13,
+        "totalVolumeCount": 15,
         "author": "天城ケイ",
         "illustrator": "ニノモトニノ",
         "label": "ファンタジア文庫",
@@ -1272,6 +1272,10 @@
                 "code": "あ-11 / 1-7"
             },
             {
+                "title": "アサシンズプライド\nSecret Garden",
+                "code": "あ-11 / 1-8"
+            },
+            {
                 "title": "アサシンズプライド\n8 暗殺教師と幻月革命",
                 "code": "あ-11 / 1-9"
             },
@@ -1288,30 +1292,16 @@
                 "code": "あ-11 / 1-12"
             },
             {
+                "title": "アサシンズプライド\nSecret Garden 2",
+                "code": "あ-11 / 1-13"
+            },
+            {
                 "title": "アサシンズプライド\n12 暗殺教師と薄明星火",
                 "code": "あ-11 / 1-14"
             },
             {
                 "title": "アサシンズプライド\n13 暗殺教師と廻天導地",
                 "code": "あ-11 / 1-15"
-            }
-        ]
-    },
-    {
-        "seriesName": "アサシンズプライド Secret Garden",
-        "totalVolumeCount": 2,
-        "author": "天城ケイ",
-        "illustrator": "ニノモトニノ",
-        "label": "ファンタジア文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
-            {
-                "title": "アサシンズプライド\nSecret Garden",
-                "code": "あ-11 / 1-8"
-            },
-            {
-                "title": "アサシンズプライド\nSecret Garden 2",
-                "code": "あ-11 / 1-13"
             }
         ]
     },

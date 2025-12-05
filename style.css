@@ -1,12 +1,12 @@
 :root {
-    --bg-color: #0d1117;        /* GitHub Dark Background */
-    --card-bg: #161b22;         /* GitHub Card Background */
-    --border-color: #30363d;    /* Dark Border */
-    --text-main: #c9d1d9;       /* Main Text */
-    --text-sub: #8b949e;        /* Sub Text */
-    --accent-color: #58a6ff;    /* Blue Accent */
-    --success-color: #238636;   /* Green (Owned) */
-    --danger-color: #da3633;    /* Red (Unowned) */
+    --bg-color: #0d1117;        /* 背景色 */
+    --card-bg: #161b22;         /* カード背景 */
+    --border-color: #30363d;    /* 枠線 */
+    --text-main: #c9d1d9;       /* メイン文字色 */
+    --text-sub: #8b949e;        /* サブ文字色 */
+    --accent-color: #58a6ff;    /* アクセント（青） */
+    --success-color: #238636;   /* 緑（所持） */
+    --danger-color: #da3633;    /* 赤（未所持） */
     --header-height: 60px;
 }
 
@@ -17,11 +17,11 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.5;
-    /* 背景画像なし */
+    overflow-x: hidden; /* 横スクロール防止 */
 }
 
 /* Container */
@@ -29,6 +29,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
 }
 
 /* Header */
@@ -46,17 +47,25 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-wrap: wrap; /* 折り返しを許可 */
+    gap: 15px;
 }
 
 h1 {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-main);
+    white-space: normal;      /* テキスト折り返し許可 */
+    overflow-wrap: break-word; /* 長い単語も折り返す */
+    line-height: 1.2;
 }
 
 /* Search Box */
+.search-box {
+    width: auto;
+    max-width: 100%;
+}
+
 .search-box input {
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
@@ -64,6 +73,7 @@ h1 {
     padding: 8px 12px;
     border-radius: 6px;
     width: 300px;
+    max-width: 100%; /* 画面幅を超えないようにする */
     transition: 0.2s;
 }
 
@@ -75,7 +85,7 @@ h1 {
 
 /* Main Grid */
 main {
-    padding: 40px 20px;
+    padding: 20px;
 }
 
 .grid {
@@ -90,15 +100,8 @@ main {
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    border-color: var(--text-sub);
 }
 
 /* Card Header */
@@ -107,6 +110,8 @@ main {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 10px;
+    flex-wrap: wrap; /* タイトルが長い場合の対策 */
+    gap: 10px;
 }
 
 .series-title {
@@ -114,6 +119,8 @@ main {
     font-weight: 700;
     color: var(--accent-color);
     line-height: 1.3;
+    flex: 1; /* 残りの幅を使う */
+    min-width: 200px;
 }
 
 .badge {
@@ -122,7 +129,6 @@ main {
     border-radius: 12px;
     font-weight: 600;
     white-space: nowrap;
-    margin-left: 10px;
     background-color: var(--border-color);
     color: var(--text-sub);
 }
@@ -155,7 +161,7 @@ main {
     background-color: var(--border-color);
     border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .progress-bar {
@@ -164,59 +170,79 @@ main {
     transition: width 0.5s ease;
 }
 
-/* Volumes Lists */
+/* Volumes Section (横スクロール対応) */
 .volumes-section {
     display: flex;
-    gap: 15px;
-    margin-top: auto; /* Push to bottom */
+    flex-direction: column; /* PCでも縦並びに変更して横幅を確保 */
+    gap: 20px;
+    margin-top: auto;
     font-size: 0.85rem;
-}
-
-.vol-group {
-    flex: 1;
+    width: 100%;
+    overflow: hidden; /* 親要素へのはみ出し防止 */
 }
 
 .vol-group h3 {
     font-size: 0.8rem;
     text-transform: uppercase;
     color: var(--text-sub);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 4px;
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .vol-group.owned h3 { color: #3fb950; }
 .vol-group.unowned h3 { color: #f85149; }
 
+/* 横スクロールするリストのスタイル */
 .vol-group ul {
     list-style: none;
-    max-height: 150px;
-    overflow-y: auto;
-    /* Custom Scrollbar */
+    display: flex;           /* 横並びにする */
+    flex-wrap: nowrap;       /* 折り返さない */
+    overflow-x: auto;        /* 横スクロール有効化 */
+    overflow-y: hidden;
+    gap: 8px;
+    padding-bottom: 8px;     /* スクロールバー用の余白 */
+    -webkit-overflow-scrolling: touch; /* 滑らかなスクロール */
+    
+    /* スクロールバーのカスタマイズ */
     scrollbar-width: thin;
     scrollbar-color: var(--border-color) transparent;
 }
 
 .vol-group ul::-webkit-scrollbar {
-    width: 4px;
+    height: 4px; /* 横スクロールバーの高さ */
 }
 .vol-group ul::-webkit-scrollbar-thumb {
     background-color: var(--border-color);
     border-radius: 4px;
 }
 
+/* 巻数アイテム（チップ型） */
 .vol-group li {
-    padding: 2px 0;
-    border-bottom: 1px solid rgba(48, 54, 61, 0.5);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    background-color: rgba(22, 27, 34, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 4px 12px;
+    white-space: nowrap; /* テキスト折り返し禁止 */
+    flex: 0 0 auto;      /* 縮小させない */
+    font-size: 0.8rem;
+}
+
+.vol-group.owned li {
+    border-color: rgba(35, 134, 54, 0.3);
+    color: #e6ffed;
+}
+
+.vol-group.unowned li {
+    border-color: rgba(218, 54, 51, 0.3);
+    color: #ffdce0;
 }
 
 .vol-group li.none {
+    border: none;
     color: var(--text-sub);
-    font-style: italic;
-    opacity: 0.5;
+    padding-left: 0;
 }
 
 /* Footer */
@@ -229,51 +255,44 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Mobile Responsive Improvements */
+/* Mobile Responsive */
 @media (max-width: 600px) {
-    /* グリッドを1列にする */
+    /* グリッドを1列に */
     .grid {
         grid-template-columns: 1fr;
-        gap: 15px; /* カード間の隙間を少し狭く */
-    }
-
-    /* メインコンテンツの余白調整 */
-    main {
-        padding: 20px 15px;
-    }
-
-    /* ヘッダーの調整 */
-    header .container {
-        flex-direction: column; /* 縦並びにする */
-        align-items: stretch;   /* 横幅いっぱいに広げる */
         gap: 15px;
     }
 
-    /* タイトルを中央寄せ */
+    /* ヘッダーの固定解除（拡大時の見切れ対策） */
+    header {
+        position: relative;
+    }
+    
+    header .container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        padding: 0 15px;
+    }
+
     h1 {
         text-align: center;
         font-size: 1.3rem;
     }
 
-    /* 検索ボックスのスマホ最適化 */
+    /* 検索ボックス */
     .search-box input {
         width: 100%;
-        font-size: 16px; /* 16px以上にするとiPhoneで入力時にズームされなくなる */
-        padding: 10px;   /* タップしやすいように少し広く */
+        font-size: 16px; /* iPhoneでのズーム防止 */
     }
 
-    /* カード内の余白を少し詰めて情報量を見やすく */
+    /* カード */
     .card {
         padding: 15px;
     }
     
-    .card-header {
-        flex-direction: column; /* 長いタイトル対策 */
-        gap: 5px;
-    }
-    
-    .badge {
-        margin-left: 0;
-        align-self: flex-start; /* バッジを左寄せに */
+    /* 横スクロールエリアの微調整 */
+    .vol-group ul {
+        padding-bottom: 12px; /* スマホで操作しやすいよう少し広めに */
     }
 }

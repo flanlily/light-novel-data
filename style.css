@@ -229,51 +229,12 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Mobile Responsive Improvements */
+/* Mobile Responsive */
 @media (max-width: 600px) {
-    /* グリッドを1列にする */
     .grid {
         grid-template-columns: 1fr;
-        gap: 15px; /* カード間の隙間を少し狭く */
     }
-
-    /* メインコンテンツの余白調整 */
-    main {
-        padding: 20px 15px;
-    }
-
-    /* ヘッダーの調整 */
-    header .container {
-        flex-direction: column; /* 縦並びにする */
-        align-items: stretch;   /* 横幅いっぱいに広げる */
-        gap: 15px;
-    }
-
-    /* タイトルを中央寄せ */
-    h1 {
-        text-align: center;
-        font-size: 1.3rem;
-    }
-
-    /* 検索ボックスのスマホ最適化 */
     .search-box input {
         width: 100%;
-        font-size: 16px; /* 16px以上にするとiPhoneで入力時にズームされなくなる */
-        padding: 10px;   /* タップしやすいように少し広く */
-    }
-
-    /* カード内の余白を少し詰めて情報量を見やすく */
-    .card {
-        padding: 15px;
-    }
-    
-    .card-header {
-        flex-direction: column; /* 長いタイトル対策 */
-        gap: 5px;
-    }
-    
-    .badge {
-        margin-left: 0;
-        align-self: flex-start; /* バッジを左寄せに */
     }
 }

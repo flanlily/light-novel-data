@@ -1079,43 +1079,19 @@
         ]
     },
     {
-        "seriesName": "可愛ければ変態でも好きになってくれますか?1",
-        "totalVolumeCount": 1,
-        "author": "花間燈",
-        "illustrator": "sune",
-        "label": "MF文庫J",
-        "ownedVolumes": [
-            {
-                "title": "可愛ければ変態でも好きになってくれますか?1",
-                "code": "は-07-05"
-            }
-        ],
-        "unownedVolumes": []
-    },
-    {
-        "seriesName": "可愛ければ変態でも好きになってくれますか?2",
-        "totalVolumeCount": 1,
-        "author": "花間燈",
-        "illustrator": "sune",
-        "label": "MF文庫J",
-        "ownedVolumes": [
-            {
-                "title": "可愛ければ変態でも好きになってくれますか?2",
-                "code": "は-07-06"
-            }
-        ],
-        "unownedVolumes": []
-    },
-    {
         "seriesName": "可愛ければ変態でも好きになってくれますか?",
-        "totalVolumeCount": 13,
+        "totalVolumeCount": 14,
         "author": "花間燈",
         "illustrator": "sune",
         "label": "MF文庫J",
         "ownedVolumes": [
             {
-                "title": "可愛ければ変態でも好きになってくれますか?\n3",
-                "code": "は-07-07"
+                "title": "可愛ければ変態でも好きになってくれますか? 1",
+                "code": "は-07-05"
+            },
+            {
+                "title": "可愛ければ変態でも好きになってくれますか? 2",
+                "code": "は-07-06"
             },
             {
                 "title": "可愛ければ変態でも好きになってくれますか?\n4",
@@ -1168,6 +1144,20 @@
                 "code": "は-07-19"
             }
         ]
+    },
+    {
+        "seriesName": "可愛ければ変態でも好きになってくれますか?3",
+        "totalVolumeCount": 1,
+        "author": "花間燈",
+        "illustrator": "sune",
+        "label": "MF文庫J",
+        "ownedVolumes": [
+            {
+                "title": "可愛ければ変態でも好きになってくれますか?3",
+                "code": "は-07-07"
+            }
+        ],
+        "unownedVolumes": []
     },
     {
         "seriesName": "義妹生活",

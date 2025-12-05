@@ -1200,42 +1200,22 @@
         ]
     },
     {
-        "seriesName": "義妹生活1",
-        "totalVolumeCount": 1,
+        "seriesName": "義妹生活",
+        "totalVolumeCount": 3,
         "author": "三河ごーすと",
         "illustrator": "Hiten",
         "label": "MF文庫J",
         "ownedVolumes": [
             {
-                "title": "義妹生活1",
+                "title": "義妹生活 1",
                 "code": "み-10-16"
-            }
-        ],
-        "unownedVolumes": []
-    },
-    {
-        "seriesName": "義妹生活2",
-        "totalVolumeCount": 1,
-        "author": "三河ごーすと",
-        "illustrator": "Hiten",
-        "label": "MF文庫J",
-        "ownedVolumes": [
+            },
             {
-                "title": "義妹生活2",
+                "title": "義妹生活 2",
                 "code": "み-10-17"
-            }
-        ],
-        "unownedVolumes": []
-    },
-    {
-        "seriesName": "義妹生活3",
-        "totalVolumeCount": 1,
-        "author": "三河ごーすと",
-        "illustrator": "Hiten",
-        "label": "MF文庫J",
-        "ownedVolumes": [
+            },
             {
-                "title": "義妹生活3",
+                "title": "義妹生活 3",
                 "code": "み-10-18"
             }
         ],

@@ -1201,7 +1201,7 @@
     },
     {
         "seriesName": "義妹生活",
-        "totalVolumeCount": 7,
+        "totalVolumeCount": 8,
         "author": "三河ごーすと",
         "illustrator": "Hiten",
         "label": "MF文庫J",
@@ -1235,19 +1235,9 @@
             {
                 "title": "義妹生活 7",
                 "code": "み-10-23"
-            }
-        ]
-    },
-    {
-        "seriesName": "義妹生活8",
-        "totalVolumeCount": 1,
-        "author": "三河ごーすと",
-        "illustrator": "Hiten",
-        "label": "MF文庫J",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
-                "title": "義妹生活8",
+                "title": "義妹生活 8",
                 "code": "み-10-24"
             }
         ]

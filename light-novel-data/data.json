@@ -225,7 +225,7 @@
     },
     {
         "seriesName": "あなたを諦めきれない元許嫁じゃダメですか?",
-        "totalVolumeCount": 1,
+        "totalVolumeCount": 3,
         "author": "桜目禅斗",
         "illustrator": "かるたも",
         "label": "角川スニーカー文庫",
@@ -235,32 +235,13 @@
                 "code": "さ - 3 / 2 - 1"
             }
         ],
-        "unownedVolumes": []
-    },
-    {
-        "seriesName": "あなたを諦めきれない元許嫁じゃダメですか?2",
-        "totalVolumeCount": 1,
-        "author": "桜目禅斗",
-        "illustrator": "かるたも",
-        "label": "角川スニーカー文庫",
-        "ownedVolumes": [],
         "unownedVolumes": [
             {
-                "title": "あなたを諦めきれない元許嫁じゃダメですか?2",
+                "title": "あなたを諦めきれない元許嫁じゃダメですか? 2",
                 "code": "さ - 3 / 2 - 2"
-            }
-        ]
-    },
-    {
-        "seriesName": "あなたを諦めきれない元許嫁じゃダメですか?3",
-        "totalVolumeCount": 1,
-        "author": "桜目禅斗",
-        "illustrator": "かるたも",
-        "label": "角川スニーカー文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
-                "title": "あなたを諦めきれない元許嫁じゃダメですか?3",
+                "title": "あなたを諦めきれない元許嫁じゃダメですか? 3",
                 "code": "さ - 3 / 2 - 3"
             }
         ]

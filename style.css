@@ -1,12 +1,12 @@
 :root {
-    --bg-color: #0d1117;
-    --card-bg: #161b22;
-    --border-color: #30363d;
-    --text-main: #c9d1d9;
-    --text-sub: #8b949e;
-    --accent-color: #58a6ff;
-    --success-color: #238636;
-    --danger-color: #da3633;
+    --bg-color: #0d1117;        /* GitHub Dark Background */
+    --card-bg: #161b22;         /* GitHub Card Background */
+    --border-color: #30363d;    /* Dark Border */
+    --text-main: #c9d1d9;       /* Main Text */
+    --text-sub: #8b949e;        /* Sub Text */
+    --accent-color: #58a6ff;    /* Blue Accent */
+    --success-color: #238636;   /* Green (Owned) */
+    --danger-color: #da3633;    /* Red (Unowned) */
     --header-height: 60px;
 }
 
@@ -17,18 +17,18 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.5;
+    /* 背景画像なし */
 }
 
-/* Container (幅の統一管理) */
+/* Container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px; /* PCでの左右余白 */
-    width: 100%;
+    padding: 0 20px;
 }
 
 /* Header */
@@ -36,7 +36,8 @@ header {
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -46,24 +47,16 @@ header .container {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
 }
 
 h1 {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-main);
-    white-space: normal;
-    overflow-wrap: break-word;
-    line-height: 1.2;
 }
 
 /* Search Box */
-.search-box {
-    width: auto;
-    max-width: 100%;
-}
-
 .search-box input {
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
@@ -71,7 +64,6 @@ h1 {
     padding: 8px 12px;
     border-radius: 6px;
     width: 300px;
-    max-width: 100%;
     transition: 0.2s;
 }
 
@@ -83,7 +75,7 @@ h1 {
 
 /* Main Grid */
 main {
-    padding: 40px 0; /* 上下の余白のみ設定 (左右はcontainerに従う) */
+    padding: 40px 20px;
 }
 
 .grid {
@@ -98,8 +90,15 @@ main {
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    border-color: var(--text-sub);
 }
 
 /* Card Header */
@@ -108,8 +107,6 @@ main {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 10px;
-    flex-wrap: wrap;
-    gap: 10px;
 }
 
 .series-title {
@@ -117,8 +114,6 @@ main {
     font-weight: 700;
     color: var(--accent-color);
     line-height: 1.3;
-    flex: 1;
-    min-width: 200px;
 }
 
 .badge {
@@ -127,6 +122,7 @@ main {
     border-radius: 12px;
     font-weight: 600;
     white-space: nowrap;
+    margin-left: 10px;
     background-color: var(--border-color);
     color: var(--text-sub);
 }
@@ -159,7 +155,7 @@ main {
     background-color: var(--border-color);
     border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .progress-bar {
@@ -168,63 +164,59 @@ main {
     transition: width 0.5s ease;
 }
 
-/* Volumes Section */
+/* Volumes Lists */
 .volumes-section {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: auto;
+    gap: 15px;
+    margin-top: auto; /* Push to bottom */
     font-size: 0.85rem;
-    width: 100%;
+}
+
+.vol-group {
+    flex: 1;
 }
 
 .vol-group h3 {
     font-size: 0.8rem;
     text-transform: uppercase;
     color: var(--text-sub);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
     margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
 }
 
 .vol-group.owned h3 { color: #3fb950; }
 .vol-group.unowned h3 { color: #f85149; }
 
-/* リストスタイル */
 .vol-group ul {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding-bottom: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    /* Custom Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
 }
 
-/* 巻数アイテム */
+.vol-group ul::-webkit-scrollbar {
+    width: 4px;
+}
+.vol-group ul::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 4px;
+}
+
 .vol-group li {
-    background-color: rgba(22, 27, 34, 0.5);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 4px 12px;
-    white-space: normal;
-    font-size: 0.8rem;
-}
-
-.vol-group.owned li {
-    border-color: rgba(35, 134, 54, 0.3);
-    color: #e6ffed;
-}
-
-.vol-group.unowned li {
-    border-color: rgba(218, 54, 51, 0.3);
-    color: #ffdce0;
+    padding: 2px 0;
+    border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .vol-group li.none {
-    border: none;
     color: var(--text-sub);
-    padding-left: 0;
-    background: none;
+    font-style: italic;
+    opacity: 0.5;
 }
 
 /* Footer */
@@ -237,39 +229,51 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Mobile Responsive */
+/* Mobile Responsive Improvements */
 @media (max-width: 600px) {
-    /* コンテナの左右余白をスマホ用に統一 (15px) */
-    .container {
-        padding: 0 15px;
-    }
-
+    /* グリッドを1列にする */
     .grid {
         grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    header .container {
-        flex-direction: column;
-        align-items: stretch;
-        /* 個別のpadding指定を削除し、親の.containerに従わせる */
+        gap: 15px; /* カード間の隙間を少し狭く */
     }
 
+    /* メインコンテンツの余白調整 */
+    main {
+        padding: 20px 15px;
+    }
+
+    /* ヘッダーの調整 */
+    header .container {
+        flex-direction: column; /* 縦並びにする */
+        align-items: stretch;   /* 横幅いっぱいに広げる */
+        gap: 15px;
+    }
+
+    /* タイトルを中央寄せ */
     h1 {
         text-align: center;
         font-size: 1.3rem;
     }
 
+    /* 検索ボックスのスマホ最適化 */
     .search-box input {
         width: 100%;
-        font-size: 16px;
+        font-size: 16px; /* 16px以上にするとiPhoneで入力時にズームされなくなる */
+        padding: 10px;   /* タップしやすいように少し広く */
     }
 
-    main {
-        padding: 20px 0; /* 上下の余白を少し狭く */
-    }
-
+    /* カード内の余白を少し詰めて情報量を見やすく */
     .card {
         padding: 15px;
+    }
+    
+    .card-header {
+        flex-direction: column; /* 長いタイトル対策 */
+        gap: 5px;
+    }
+    
+    .badge {
+        margin-left: 0;
+        align-self: flex-start; /* バッジを左寄せに */
     }
 }

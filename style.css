@@ -1,12 +1,12 @@
 :root {
-    --bg-color: #0d1117;        /* 背景色 */
-    --card-bg: #161b22;         /* カード背景 */
-    --border-color: #30363d;    /* 枠線 */
-    --text-main: #c9d1d9;       /* メイン文字色 */
-    --text-sub: #8b949e;        /* サブ文字色 */
-    --accent-color: #58a6ff;    /* アクセント（青） */
-    --success-color: #238636;   /* 緑（所持） */
-    --danger-color: #da3633;    /* 赤（未所持） */
+    --bg-color: #0d1117;
+    --card-bg: #161b22;
+    --border-color: #30363d;
+    --text-main: #c9d1d9;
+    --text-sub: #8b949e;
+    --accent-color: #58a6ff;
+    --success-color: #238636;
+    --danger-color: #da3633;
     --header-height: 60px;
 }
 
@@ -21,7 +21,6 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.5;
-    overflow-x: hidden; /* 横スクロール防止 */
 }
 
 /* Container */
@@ -37,8 +36,8 @@ header {
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
-    position: sticky;
-    top: 0;
+    /* スマホでの見切れ防止のため sticky は解除しておきます */
+    position: relative;
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -47,7 +46,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* 折り返しを許可 */
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -55,8 +54,9 @@ h1 {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-main);
-    white-space: normal;      /* テキスト折り返し許可 */
-    overflow-wrap: break-word; /* 長い単語も折り返す */
+    /* 長いタイトルも折り返して表示 */
+    white-space: normal;
+    overflow-wrap: break-word;
     line-height: 1.2;
 }
 
@@ -73,7 +73,7 @@ h1 {
     padding: 8px 12px;
     border-radius: 6px;
     width: 300px;
-    max-width: 100%; /* 画面幅を超えないようにする */
+    max-width: 100%;
     transition: 0.2s;
 }
 
@@ -110,7 +110,7 @@ main {
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 10px;
-    flex-wrap: wrap; /* タイトルが長い場合の対策 */
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -119,7 +119,7 @@ main {
     font-weight: 700;
     color: var(--accent-color);
     line-height: 1.3;
-    flex: 1; /* 残りの幅を使う */
+    flex: 1;
     min-width: 200px;
 }
 
@@ -170,15 +170,14 @@ main {
     transition: width 0.5s ease;
 }
 
-/* Volumes Section (横スクロール対応) */
+/* Volumes Section */
 .volumes-section {
     display: flex;
-    flex-direction: column; /* PCでも縦並びに変更して横幅を確保 */
+    flex-direction: column;
     gap: 20px;
     margin-top: auto;
     font-size: 0.85rem;
     width: 100%;
-    overflow: hidden; /* 親要素へのはみ出し防止 */
 }
 
 .vol-group h3 {
@@ -194,38 +193,22 @@ main {
 .vol-group.owned h3 { color: #3fb950; }
 .vol-group.unowned h3 { color: #f85149; }
 
-/* 横スクロールするリストのスタイル */
+/* リストスタイル（横スクロール廃止、折り返し有効化） */
 .vol-group ul {
     list-style: none;
-    display: flex;           /* 横並びにする */
-    flex-wrap: nowrap;       /* 折り返さない */
-    overflow-x: auto;        /* 横スクロール有効化 */
-    overflow-y: hidden;
+    display: flex;
+    flex-wrap: wrap; /* 折り返しを有効にして全体を表示 */
     gap: 8px;
-    padding-bottom: 8px;     /* スクロールバー用の余白 */
-    -webkit-overflow-scrolling: touch; /* 滑らかなスクロール */
-    
-    /* スクロールバーのカスタマイズ */
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-color) transparent;
+    padding-bottom: 0;
 }
 
-.vol-group ul::-webkit-scrollbar {
-    height: 4px; /* 横スクロールバーの高さ */
-}
-.vol-group ul::-webkit-scrollbar-thumb {
-    background-color: var(--border-color);
-    border-radius: 4px;
-}
-
-/* 巻数アイテム（チップ型） */
+/* 巻数アイテム（チップ型は維持しつつ、全て表示されるように） */
 .vol-group li {
     background-color: rgba(22, 27, 34, 0.5);
     border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 4px 12px;
-    white-space: nowrap; /* テキスト折り返し禁止 */
-    flex: 0 0 auto;      /* 縮小させない */
+    white-space: normal; /* 必要なら折り返し */
     font-size: 0.8rem;
 }
 
@@ -243,6 +226,7 @@ main {
     border: none;
     color: var(--text-sub);
     padding-left: 0;
+    background: none;
 }
 
 /* Footer */
@@ -257,21 +241,14 @@ footer {
 
 /* Mobile Responsive */
 @media (max-width: 600px) {
-    /* グリッドを1列に */
     .grid {
         grid-template-columns: 1fr;
         gap: 15px;
-    }
-
-    /* ヘッダーの固定解除（拡大時の見切れ対策） */
-    header {
-        position: relative;
     }
     
     header .container {
         flex-direction: column;
         align-items: stretch;
-        gap: 15px;
         padding: 0 15px;
     }
 
@@ -280,19 +257,12 @@ footer {
         font-size: 1.3rem;
     }
 
-    /* 検索ボックス */
     .search-box input {
         width: 100%;
-        font-size: 16px; /* iPhoneでのズーム防止 */
+        font-size: 16px;
     }
 
-    /* カード */
     .card {
         padding: 15px;
-    }
-    
-    /* 横スクロールエリアの微調整 */
-    .vol-group ul {
-        padding-bottom: 12px; /* スマホで操作しやすいよう少し広めに */
     }
 }

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Novel Collection</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1><i class="fa-solid fa-book-open"></i> Light Novel Data</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="シリーズ名、著者名で検索...">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="series-grid" class="grid">
+            <div class="loading">Loading data...</div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Data provided by CSV & GitHub Actions</p>
+        </div>
+    </footer>
+
+    <script>
+        // JSONファイルのパス (同じ階層にある場合)
+        const JSON_PATH = './data.json'; 
+
+        async function fetchData() {
+            try {
+                const response = await fetch(JSON_PATH);
+                if (!response.ok) throw new Error("JSONの読み込みに失敗しました");
+                const data = await response.json();
+                renderLibrary(data);
+
+                // 検索機能のイベントリスナー
+                document.getElementById('searchInput').addEventListener('input', (e) => {
+                    const term = e.target.value.toLowerCase();
+                    const filtered = data.filter(item => 
+                        item.seriesName.toLowerCase().includes(term) || 
+                        item.author.toLowerCase().includes(term)
+                    );
+                    renderLibrary(filtered);
+                });
+
+            } catch (error) {
+                document.getElementById('series-grid').innerHTML = `<p class="error">エラー: ${error.message}</p>`;
+            }
+        }
+
+        function renderLibrary(data) {
+            const container = document.getElementById('series-grid');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = '<p>該当する書籍が見つかりませんでした。</p>';
+                return;
+            }
+
+            data.forEach(series => {
+                // 進捗率の計算
+                const total = series.ownedVolumes.length + series.unownedVolumes.length;
+                const percent = total === 0 ? 0 : Math.round((series.ownedVolumes.length / total) * 100);
+                
+                // コンプリート判定
+                const isComplete = series.unownedVolumes.length === 0 && total > 0;
+                const statusClass = isComplete ? 'status-complete' : 'status-ongoing';
+                const statusText = isComplete ? 'COMPLETED' : `${percent}% COLLECTED`;
+
+                // カードの生成
+                const card = document.createElement('div');
+                card.className = `card ${statusClass}`;
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="series-title">${series.seriesName}</div>
+                        <div class="badge">${statusText}</div>
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-user-pen"></i> ${series.author}</span>
+                        <span><i class="fa-solid fa-paintbrush"></i> ${series.illustrator}</span>
+                        <span><i class="fa-solid fa-tag"></i> ${series.label}</span>
+                    </div>
+                    
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" style="width: ${percent}%"></div>
+                    </div>
+
+                    <div class="volumes-section">
+                        <div class="vol-group owned">
+                            <h3><i class="fa-solid fa-check"></i> 所持 (${series.ownedVolumes.length})</h3>
+                            <ul>
+                                ${series.ownedVolumes.map(v => `
+                                    <li title="${v.code}">${v.title.replace(series.seriesName, '').trim() || v.title}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        <div class="vol-group unowned">
+                            <h3><i class="fa-solid fa-cart-shopping"></i> 未所持 (${series.unownedVolumes.length})</h3>
+                            <ul>
+                                ${series.unownedVolumes.length === 0 ? '<li class="none">なし (コンプリート)</li>' : ''}
+                                ${series.unownedVolumes.map(v => `
+                                    <li title="${v.code}">${v.title.replace(series.seriesName, '').trim() || v.title}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 実行
+        fetchData();
+    </script>
+</body>
+</html>

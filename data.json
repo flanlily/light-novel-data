@@ -1715,7 +1715,7 @@
     },
     {
         "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。",
-        "totalVolumeCount": 4,
+        "totalVolumeCount": 5,
         "author": "長岡マキ子",
         "illustrator": "magako",
         "label": "ファンタジア文庫",
@@ -1737,19 +1737,9 @@
             {
                 "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。 4",
                 "code": "な-2 / 6-4"
-            }
-        ]
-    },
-    {
-        "seriesName": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。5",
-        "totalVolumeCount": 1,
-        "author": "長岡マキ子",
-        "illustrator": "magako",
-        "label": "ファンタジア文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
-                "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。5",
+                "title": "経験済みなキミと、経験ゼロなオレが、お付き合いする話。 5",
                 "code": "な-2 / 6-5"
             }
         ]

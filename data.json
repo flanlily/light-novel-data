@@ -29,7 +29,7 @@
     },
     {
         "seriesName": "継母の連れ子が元カノだった",
-        "totalVolumeCount": 6,
+        "totalVolumeCount": 8,
         "author": "紙城鏡介",
         "illustrator": "たかやKi",
         "label": "角川スニーカー文庫",
@@ -49,6 +49,14 @@
             {
                 "title": "継母の連れ子が元カノだった 6",
                 "code": "か - 12 / 1 - 7"
+            },
+            {
+                "title": "継母の連れ子が元カノだった 7",
+                "code": "か - 12 / 1 - 8"
+            },
+            {
+                "title": "継母の連れ子が元カノだった 8",
+                "code": "か - 12 / 1 - 9"
             }
         ],
         "unownedVolumes": [
@@ -61,34 +69,6 @@
                 "code": "か - 12 / 1 - 2"
             }
         ]
-    },
-    {
-        "seriesName": "継母の連れ子が元カノだった7",
-        "totalVolumeCount": 1,
-        "author": "紙城鏡介",
-        "illustrator": "たかやKi",
-        "label": "角川スニーカー文庫",
-        "ownedVolumes": [
-            {
-                "title": "継母の連れ子が元カノだった7",
-                "code": "か - 12 / 1 - 8"
-            }
-        ],
-        "unownedVolumes": []
-    },
-    {
-        "seriesName": "継母の連れ子が元カノだった8",
-        "totalVolumeCount": 1,
-        "author": "紙城鏡介",
-        "illustrator": "たかやKi",
-        "label": "角川スニーカー文庫",
-        "ownedVolumes": [
-            {
-                "title": "継母の連れ子が元カノだった8",
-                "code": "か - 12 / 1 - 9"
-            }
-        ],
-        "unownedVolumes": []
     },
     {
         "seriesName": "継母の連れ子が元カノだった9",

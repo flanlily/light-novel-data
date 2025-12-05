@@ -2579,17 +2579,30 @@
         "unownedVolumes": []
     },
     {
+        "seriesName": "偶然助けた美少女がなぜか俺に懐いてしまった件について",
+        "totalVolumeCount": 2,
+        "author": "桜ノ宮天音",
+        "illustrator": "うなさか",
+        "label": "ファミ通文庫",
+        "ownedVolumes": [
+            {
+                "title": "偶然助けた美少女がなぜか俺に懐いてしまった件について",
+                "code": "さ10 / 1-1"
+            },
+            {
+                "title": "偶然助けた美少女がなぜか俺に懐いてしまった件について 2",
+                "code": "さ10 / 1-2"
+            }
+        ],
+        "unownedVolumes": []
+    },
+    {
         "seriesName": "北欧美少女のクラスメイトが、婚約者になったら\n デレデレの甘々になってしまった件について",
-        "totalVolumeCount": 3,
+        "totalVolumeCount": 2,
         "author": "軽井広",
         "illustrator": "pon",
         "label": "ブレイブ文庫",
-        "ownedVolumes": [
-            {
-                "title": "北欧美少女のクラスメイトが、婚約者になったら\n デレデレの甘々になってしまった件について 1",
-                "code": "か-02-01"
-            }
-        ],
+        "ownedVolumes": [],
         "unownedVolumes": [
             {
                 "title": "北欧美少女のクラスメイトが、婚約者になったら\n デレデレの甘々になってしまった件について 2",

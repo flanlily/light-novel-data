@@ -91,7 +91,7 @@
         ]
     },
     {
-        "seriesName": "路地裏で拾った女の子がバッドエンド後の\n 乙女ゲームのヒロインだった件",
+        "seriesName": "路地裏で拾った女の子がバッドエンド後の  乙女ゲームのヒロインだった件",
         "totalVolumeCount": 1,
         "author": "カボチャマスク",
         "illustrator": "へいろー",
@@ -132,7 +132,7 @@
         ]
     },
     {
-        "seriesName": "お見合いをしたくなかったので、無理難題な条件をつけたら\n 同級生が来た件について",
+        "seriesName": "お見合いをしたくなかったので、無理難題な条件をつけたら  同級生が来た件について",
         "totalVolumeCount": 8,
         "author": "桜木桜",
         "illustrator": "clear",
@@ -483,7 +483,7 @@
     },
     {
         "seriesName": "安達としまむら",
-        "totalVolumeCount": 14,
+        "totalVolumeCount": 16,
         "author": "入間人間",
         "illustrator": "のん",
         "label": "電撃文庫",
@@ -535,6 +535,10 @@
                 "code": "い-9-37"
             },
             {
+                "title": "安達としまむら\nSS",
+                "code": "い-9-38"
+            },
+            {
                 "title": "安達としまむら\n99.9",
                 "code": "い-9-39"
             },
@@ -543,36 +547,12 @@
                 "code": "い-9-40"
             },
             {
-                "title": "安達としまむら\n13",
-                "code": "い-9-42"
-            }
-        ]
-    },
-    {
-        "seriesName": "安達としまむら\nSS",
-        "totalVolumeCount": 1,
-        "author": "入間人間",
-        "illustrator": "のん",
-        "label": "電撃文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
-            {
-                "title": "安達としまむら\nSS",
-                "code": "い-9-38"
-            }
-        ]
-    },
-    {
-        "seriesName": "安達としまむら\nSS2",
-        "totalVolumeCount": 1,
-        "author": "入間人間",
-        "illustrator": "のん",
-        "label": "電撃文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
-            {
                 "title": "安達としまむら\nSS2",
                 "code": "い-9-41"
+            },
+            {
+                "title": "安達としまむら\n13",
+                "code": "い-9-42"
             }
         ]
     },
@@ -1100,7 +1080,7 @@
     },
     {
         "seriesName": "可愛ければ変態でも好きになってくれますか?",
-        "totalVolumeCount": 14,
+        "totalVolumeCount": 15,
         "author": "花間燈",
         "illustrator": "sune",
         "label": "MF文庫J",
@@ -1162,17 +1142,7 @@
             {
                 "title": "可愛ければ変態でも好きになってくれますか?\n14",
                 "code": "は-07-18"
-            }
-        ]
-    },
-    {
-        "seriesName": "可愛ければ変態でも好きになってくれますか?\nアートワークス",
-        "totalVolumeCount": 1,
-        "author": "花間燈",
-        "illustrator": "sune",
-        "label": "MF文庫J",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
                 "title": "可愛ければ変態でも好きになってくれますか?\nアートワークス",
                 "code": "は-07-19"
@@ -1251,7 +1221,7 @@
         ]
     },
     {
-        "seriesName": "無口な俺が深夜に通話しているのは、\n クラスで1番美人な優等生でした",
+        "seriesName": "無口な俺が深夜に通話しているのは、  クラスで1番美人な優等生でした",
         "totalVolumeCount": 1,
         "author": "六畳のえる",
         "illustrator": "ファルまろ",
@@ -1328,7 +1298,7 @@
         ]
     },
     {
-        "seriesName": "アサシンズプライド\nSecret Garden",
+        "seriesName": "アサシンズプライド Secret Garden",
         "totalVolumeCount": 2,
         "author": "天城ケイ",
         "illustrator": "ニノモトニノ",
@@ -1379,7 +1349,7 @@
         "unownedVolumes": []
     },
     {
-        "seriesName": "コンビニ強盗から助けた地味店員が、\n 同じクラスのうぶで可愛いギャルだった",
+        "seriesName": "コンビニ強盗から助けた地味店員が、  同じクラスのうぶで可愛いギャルだった",
         "totalVolumeCount": 3,
         "author": "あボーン",
         "illustrator": "なかむら",
@@ -1479,7 +1449,7 @@
         "unownedVolumes": []
     },
     {
-        "seriesName": "性別不詳VTuberたちがオフ会したら\n お例外全員女子だった",
+        "seriesName": "性別不詳VTuberたちがオフ会したら  お例外全員女子だった",
         "totalVolumeCount": 1,
         "author": "最宮みはや",
         "illustrator": "あやみ",
@@ -1536,8 +1506,8 @@
         ]
     },
     {
-        "seriesName": "王様のプロポーズ 1\n極彩の魔女",
-        "totalVolumeCount": 1,
+        "seriesName": "王様のプロポーズ",
+        "totalVolumeCount": 6,
         "author": "橘公司",
         "illustrator": "つなこ",
         "label": "ファンタジア文庫",
@@ -1545,68 +1515,33 @@
             {
                 "title": "王様のプロポーズ 1\n極彩の魔女",
                 "code": "た-4 / 7-1"
-            }
-        ],
-        "unownedVolumes": []
-    },
-    {
-        "seriesName": "王様のプロポーズ 2\n鴇羽の悪魔",
-        "totalVolumeCount": 1,
-        "author": "橘公司",
-        "illustrator": "つなこ",
-        "label": "ファンタジア文庫",
-        "ownedVolumes": [
+            },
             {
                 "title": "王様のプロポーズ 2\n鴇羽の悪魔",
                 "code": "た-4 / 7-2"
             }
         ],
-        "unownedVolumes": []
-    },
-    {
-        "seriesName": "王様のプロポーズ 3\n瑠璃の騎士",
-        "totalVolumeCount": 1,
-        "author": "橘公司",
-        "illustrator": "つなこ",
-        "label": "ファンタジア文庫",
-        "ownedVolumes": [],
         "unownedVolumes": [
             {
                 "title": "王様のプロポーズ 3\n瑠璃の騎士",
                 "code": "た-4 / 7-3"
-            }
-        ]
-    },
-    {
-        "seriesName": "王様のプロポーズ 4\n黄金の神子",
-        "totalVolumeCount": 1,
-        "author": "橘公司",
-        "illustrator": "つなこ",
-        "label": "ファンタジア文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
                 "title": "王様のプロポーズ 4\n黄金の神子",
                 "code": "た-4 / 7-4"
-            }
-        ]
-    },
-    {
-        "seriesName": "王様のプロポーズ 5\n真赭の賢者",
-        "totalVolumeCount": 1,
-        "author": "橘公司",
-        "illustrator": "つなこ",
-        "label": "ファンタジア文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+            },
             {
                 "title": "王様のプロポーズ 5\n真赭の賢者",
                 "code": "た-4 / 7-5"
+            },
+            {
+                "title": "王様のプロポーズ 1st Bride",
+                "code": "た-4 / 7-9"
             }
         ]
     },
     {
-        "seriesName": "王様のプロポーズ６\n銀灰の妖精",
+        "seriesName": "王様のプロポーズ６ 銀灰の妖精",
         "totalVolumeCount": 1,
         "author": "橘公司",
         "illustrator": "つなこ",
@@ -1620,7 +1555,7 @@
         ]
     },
     {
-        "seriesName": "王様のプロポーズ７\n烏黒の従者",
+        "seriesName": "王様のプロポーズ７ 烏黒の従者",
         "totalVolumeCount": 1,
         "author": "橘公司",
         "illustrator": "つなこ",
@@ -1634,7 +1569,7 @@
         ]
     },
     {
-        "seriesName": "王様のプロポーズ８\n薔薇の使徒",
+        "seriesName": "王様のプロポーズ８ 薔薇の使徒",
         "totalVolumeCount": 1,
         "author": "橘公司",
         "illustrator": "つなこ",
@@ -1644,20 +1579,6 @@
             {
                 "title": "王様のプロポーズ８\n薔薇の使徒",
                 "code": "た-4 / 7-8"
-            }
-        ]
-    },
-    {
-        "seriesName": "王様のプロポーズ",
-        "totalVolumeCount": 1,
-        "author": "橘公司",
-        "illustrator": "つなこ",
-        "label": "ファンタジア文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
-            {
-                "title": "王様のプロポーズ 1st Bride",
-                "code": "た-4 / 7-9"
             }
         ]
     },
@@ -1776,7 +1697,7 @@
         ]
     },
     {
-        "seriesName": "クラスの優等生を『妹』にする約束をした。\n どうやらいっぱい甘えたいらしい。",
+        "seriesName": "クラスの優等生を『妹』にする約束をした。  どうやらいっぱい甘えたいらしい。",
         "totalVolumeCount": 2,
         "author": "氷高悠",
         "illustrator": "たん旦",
@@ -1795,7 +1716,7 @@
         ]
     },
     {
-        "seriesName": "ネトゲの嫁が人気アイドルだった\n ~クール系の彼女は現実でも嫁のつもりでいる~",
+        "seriesName": "ネトゲの嫁が人気アイドルだった  ~クール系の彼女は現実でも嫁のつもりでいる~",
         "totalVolumeCount": 3,
         "author": "あボーン",
         "illustrator": "館田ダン",
@@ -1818,7 +1739,7 @@
         ]
     },
     {
-        "seriesName": "ネトゲの嫁が人気アイドルだった \n ~クール系の彼女は現実でも嫁のつもりでいる~",
+        "seriesName": "ネトゲの嫁が人気アイドルだった   ~クール系の彼女は現実でも嫁のつもりでいる~",
         "totalVolumeCount": 1,
         "author": "あボーン",
         "illustrator": "館田ダン",
@@ -1832,7 +1753,7 @@
         "unownedVolumes": []
     },
     {
-        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら\n 腹ペコ美少女との半同棲生活が始まりました",
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら  腹ペコ美少女との半同棲生活が始まりました",
         "totalVolumeCount": 1,
         "author": "岸本和葉",
         "illustrator": "みわべさくら",
@@ -1846,7 +1767,7 @@
         "unownedVolumes": []
     },
     {
-        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら\n 国民的美少女と夏の思い出を作ることになりました",
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら  国民的美少女と夏の思い出を作ることになりました",
         "totalVolumeCount": 1,
         "author": "岸本和葉",
         "illustrator": "みわべさくら",
@@ -1860,7 +1781,7 @@
         "unownedVolumes": []
     },
     {
-        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら\n 素直可愛い美少女との文化祭が始まります",
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら  素直可愛い美少女との文化祭が始まります",
         "totalVolumeCount": 1,
         "author": "岸本和葉",
         "illustrator": "みわべさくら",
@@ -1874,7 +1795,7 @@
         ]
     },
     {
-        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら\n 美少女アイドルたちとの同棲生活が始まるようです",
+        "seriesName": "一生働きたくない俺が、クラスメイトの人気アイドルに懐かれたら  美少女アイドルたちとの同棲生活が始まるようです",
         "totalVolumeCount": 5,
         "author": "岸本和葉",
         "illustrator": "みわべさくら",
@@ -1904,7 +1825,7 @@
         ]
     },
     {
-        "seriesName": "幼馴染たちが人気アイドルになった\n  ～甘々な彼女たちは俺に貢いでくれている～",
+        "seriesName": "幼馴染たちが人気アイドルになった   ～甘々な彼女たちは俺に貢いでくれている～",
         "totalVolumeCount": 1,
         "author": "くろねこどらごん",
         "illustrator": "ものと",
@@ -1919,7 +1840,7 @@
     },
     {
         "seriesName": "ありふれた職業で世界最強",
-        "totalVolumeCount": 13,
+        "totalVolumeCount": 14,
         "author": "白米良",
         "illustrator": "たかやKi",
         "label": "オーバーラップ文庫",
@@ -1931,6 +1852,10 @@
             {
                 "title": "ありふれた職業で世界最強 10",
                 "code": "し-04-15"
+            },
+            {
+                "title": "ありふれた職業で世界最強 小篇集",
+                "code": "し-04-17"
             }
         ],
         "unownedVolumes": [
@@ -1979,20 +1904,6 @@
                 "code": "し-04-19"
             }
         ]
-    },
-    {
-        "seriesName": "ありふれた職業で世界最強 小篇集",
-        "totalVolumeCount": 1,
-        "author": "白米良",
-        "illustrator": "たかやKi",
-        "label": "オーバーラップ文庫",
-        "ownedVolumes": [
-            {
-                "title": "ありふれた職業で世界最強 小篇集",
-                "code": "し-04-17"
-            }
-        ],
-        "unownedVolumes": []
     },
     {
         "seriesName": "アズールレーン ~綾波、ケッコンします~",
@@ -2072,7 +1983,7 @@
         "unownedVolumes": []
     },
     {
-        "seriesName": "北欧美少女のクラスメイトが、婚約者になったら\n デレデレの甘々になってしまった件について",
+        "seriesName": "北欧美少女のクラスメイトが、婚約者になったら  デレデレの甘々になってしまった件について",
         "totalVolumeCount": 3,
         "author": "軽井広",
         "illustrator": "pon",

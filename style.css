@@ -23,11 +23,11 @@ body {
     line-height: 1.5;
 }
 
-/* Container */
+/* Container (幅の統一管理) */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px; /* PCでの左右余白 */
     width: 100%;
 }
 
@@ -36,7 +36,6 @@ header {
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
-    /* スマホでの見切れ防止のため sticky は解除しておきます */
     position: relative;
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -54,7 +53,6 @@ h1 {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-main);
-    /* 長いタイトルも折り返して表示 */
     white-space: normal;
     overflow-wrap: break-word;
     line-height: 1.2;
@@ -85,7 +83,7 @@ h1 {
 
 /* Main Grid */
 main {
-    padding: 20px;
+    padding: 40px 0; /* 上下の余白のみ設定 (左右はcontainerに従う) */
 }
 
 .grid {
@@ -193,22 +191,22 @@ main {
 .vol-group.owned h3 { color: #3fb950; }
 .vol-group.unowned h3 { color: #f85149; }
 
-/* リストスタイル（横スクロール廃止、折り返し有効化） */
+/* リストスタイル */
 .vol-group ul {
     list-style: none;
     display: flex;
-    flex-wrap: wrap; /* 折り返しを有効にして全体を表示 */
+    flex-wrap: wrap;
     gap: 8px;
     padding-bottom: 0;
 }
 
-/* 巻数アイテム（チップ型は維持しつつ、全て表示されるように） */
+/* 巻数アイテム */
 .vol-group li {
     background-color: rgba(22, 27, 34, 0.5);
     border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 4px 12px;
-    white-space: normal; /* 必要なら折り返し */
+    white-space: normal;
     font-size: 0.8rem;
 }
 
@@ -241,6 +239,11 @@ footer {
 
 /* Mobile Responsive */
 @media (max-width: 600px) {
+    /* コンテナの左右余白をスマホ用に統一 (15px) */
+    .container {
+        padding: 0 15px;
+    }
+
     .grid {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -249,7 +252,7 @@ footer {
     header .container {
         flex-direction: column;
         align-items: stretch;
-        padding: 0 15px;
+        /* 個別のpadding指定を削除し、親の.containerに従わせる */
     }
 
     h1 {
@@ -260,6 +263,10 @@ footer {
     .search-box input {
         width: 100%;
         font-size: 16px;
+    }
+
+    main {
+        padding: 20px 0; /* 上下の余白を少し狭く */
     }
 
     .card {

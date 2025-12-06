@@ -5,8 +5,8 @@
     --text-main: #c9d1d9;       /* メイン文字色 */
     --text-sub: #8b949e;        /* サブ文字色 */
     --accent-color: #58a6ff;    /* アクセント（青） */
-    --success-color: #238636;   /* 緑（所持） */
-    --danger-color: #da3633;    /* 赤（未所持） */
+    --success-color: #238636;   /* 緑（所持・成功） */
+    --danger-color: #da3633;    /* 赤（未所持・エラー） */
 }
 
 * {
@@ -106,6 +106,65 @@ body {
     color: var(--danger-color);
     margin-top: 15px;
     display: none;
+}
+
+/* =========================================
+   Admin Panel
+   ========================================= */
+#admin-panel {
+    background-color: #1c2128;
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.admin-box {
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.admin-box h3 {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+.admin-box button {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.admin-box button:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.success-box {
+    background-color: rgba(35, 134, 54, 0.2);
+    border: 1px solid var(--success-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    color: #e6ffed;
+    font-family: monospace;
+}
+
+.admin-box .error {
+    color: var(--danger-color);
+    font-weight: bold;
 }
 
 /* =========================================
@@ -246,7 +305,7 @@ main {
     transition: width 0.5s ease;
 }
 
-/* Volumes Section (Split View) */
+/* Volumes Section (2カラムレイアウト) */
 .volumes-section {
     display: flex;
     flex-direction: row;
@@ -263,7 +322,6 @@ main {
     padding: 0 10px;
 }
 
-/* Left column border */
 .vol-group:first-child {
     border-right: 1px solid var(--border-color);
     padding-left: 0;
@@ -340,7 +398,6 @@ footer {
     
     .card { padding: 15px; }
     
-    /* スマホでも横並びを維持しつつ調整 */
     .vol-group { padding: 0 5px; }
     .vol-group li { font-size: 0.7rem; }
 }

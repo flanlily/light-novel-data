@@ -1,276 +1,117 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Light Novel Collection</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-
-    <div id="login-overlay">
-        <div class="login-box">
-            <h2><i class="fa-solid fa-lock"></i> Restricted Access</h2>
-            <p>認証情報を入力してください</p>
-            
-            <input type="text" id="userIdInput" placeholder="User ID">
-            
-            <input type="password" id="passwordInput" placeholder="Password">
-            
-            <button onclick="checkPassword()">Login</button>
-            <p id="login-error">IDまたはパスワードが間違っています</p>
+<div id="admin-panel" style="display: none;">
+        <div class="container">
+            <div class="admin-box">
+                <h3><i class="fa-solid fa-user-shield"></i> Admin Menu</h3>
+                <p>新規ユーザーを自動生成して追加します。</p>
+                <button onclick="addNewUser()" id="addUserBtn">
+                    <i class="fa-solid fa-plus"></i> Add New User
+                </button>
+                <div id="admin-result"></div>
+            </div>
         </div>
     </div>
 
-    <header>
-        <div class="container">
-            <h1><i class="fa-solid fa-book-open"></i> Light Novel Data</h1>
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="シリーズ名、著者名で検索...">
-            </div>
-        </div>
-    </header>
+<script>
+    // ... (既存の定数定義などはそのまま)
 
-    <main class="container">
-        <div id="series-grid" class="grid">
-            <div class="loading">Reading Data...</div>
-        </div>
-    </main>
+    // ページ読み込み時
+    window.onload = function() {
+        const cachedData = sessionStorage.getItem('libraryData');
+        const cachedAdmin = sessionStorage.getItem('isAdmin'); // 管理者フラグ読み込み
 
-    <footer>
-        <div class="container">
-            <p>Data provided by GAS & GitHub Private Repo</p>
-        </div>
-    </footer>
-
-    <script>
-        // ▼▼▼ ここにGASのウェブアプリURLを貼り付けてください ▼▼▼
-        const GAS_API_URL = "https://script.google.com/macros/s/AKfycbykFBiOMjLaXk4eIznyCk_YTILpn2uHrk5Xz8uGWXnTYZX03yiR4aOpHSS9-wrh8rdoOQ/exec";
-        // ▲▲▲▲▲▲
-
-        // ページ読み込み時の処理
-        window.onload = function() {
-            // セッションストレージ（一時保存）を確認
-            const cachedData = sessionStorage.getItem('libraryData');
+        if (cachedData) {
+            document.getElementById('login-overlay').style.display = 'none';
+            renderLibrary(JSON.parse(cachedData));
             
-            if (cachedData) {
-                // ログイン済みなら画面を表示
+            // 管理者ならパネルを表示
+            if (cachedAdmin === 'true') {
+                document.getElementById('admin-panel').style.display = 'block';
+            }
+        } else {
+            document.querySelector('.loading').style.display = 'none';
+        }
+    };
+
+    // ログイン処理 (修正)
+    async function checkPassword() {
+        // ... (ID/Pass取得部分は同じ)
+
+        try {
+            const response = await fetch(GAS_API_URL, {
+                method: 'POST',
+                // action: 'login' を明示
+                body: JSON.stringify({ action: 'login', id: userId, pass: password })
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                sessionStorage.setItem('libraryData', JSON.stringify(result.data));
+                
+                // 管理者フラグを保存
+                sessionStorage.setItem('isAdmin', result.isAdmin);
+                sessionStorage.setItem('authId', userId);     // 再認証用
+                sessionStorage.setItem('authPass', password); // 再認証用
+
                 document.getElementById('login-overlay').style.display = 'none';
-                renderLibrary(JSON.parse(cachedData));
+                
+                // 管理者ならパネル表示
+                if (result.isAdmin) {
+                    document.getElementById('admin-panel').style.display = 'block';
+                }
+
+                renderLibrary(result.data);
             } else {
-                // 未ログイン時はロード表示を隠してログイン画面待機
-                document.querySelector('.loading').style.display = 'none';
+                throw new Error(result.message);
             }
-        };
+        } catch (error) {
+            // ... (エラー処理)
+        }
+    }
 
-        // ログイン認証処理
-        async function checkPassword() {
-            const idInput = document.getElementById('userIdInput');
-            const passInput = document.getElementById('passwordInput');
-            const errorMsg = document.getElementById('login-error');
-            const loginBtn = document.querySelector('.login-box button');
+    // ユーザー追加処理 (新規追加)
+    async function addNewUser() {
+        const btn = document.getElementById('addUserBtn');
+        const resultDiv = document.getElementById('admin-result');
+        const myId = sessionStorage.getItem('authId');
+        const myPass = sessionStorage.getItem('authPass');
 
-            const userId = idInput.value;
-            const password = passInput.value;
-
-            if (!userId || !password) {
-                errorMsg.textContent = "IDとパスワードを入力してください";
-                errorMsg.style.display = 'block';
-                return;
-            }
-
-            // ボタンを処理中表示に変更
-            loginBtn.textContent = "Verifying...";
-            loginBtn.disabled = true;
-            errorMsg.style.display = 'none';
-
-            try {
-                // GASへPOST送信
-                // ※CORS制限回避のため text/plain として送る場合がありますが
-                //   GAS側の doPost が JSON.parse していればOKです
-                const response = await fetch(GAS_API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ id: userId, pass: password })
-                });
-                
-                const result = await response.json();
-
-                if (result.success) {
-                    // 認証成功
-                    sessionStorage.setItem('libraryData', JSON.stringify(result.data));
-                    document.getElementById('login-overlay').style.display = 'none';
-                    renderLibrary(result.data);
-                } else {
-                    // 認証失敗
-                    throw new Error(result.message || "認証に失敗しました");
-                }
-
-            } catch (error) {
-                errorMsg.textContent = error.message;
-                errorMsg.style.display = 'block';
-                passInput.value = '';
-                passInput.focus();
-            } finally {
-                loginBtn.textContent = "Login";
-                loginBtn.disabled = false;
-            }
+        if (!myId || !myPass) {
+            resultDiv.innerHTML = '<span class="error">認証情報が切れています。再ログインしてください。</span>';
+            return;
         }
 
-        // Enterキーでログイン
-        document.getElementById('passwordInput').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') checkPassword();
-        });
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+        resultDiv.innerHTML = '';
 
-        // データ描画関数
-        function renderLibrary(data) {
-            const container = document.getElementById('series-grid');
-            container.innerHTML = '';
+        try {
+            const response = await fetch(GAS_API_URL, {
+                method: 'POST',
+                body: JSON.stringify({
+                    action: 'add_user',
+                    requesterId: myId,
+                    requesterPass: myPass
+                })
+            });
+            const res = await response.json();
 
-            // 検索機能のセットアップ
-            setupSearch(data);
-
-            if (!data || data.length === 0) {
-                container.innerHTML = '<p>データが見つかりませんでした。</p>';
-                return;
-            }
-
-            data.forEach(series => {
-                // 進捗率計算
-                const total = series.ownedVolumes.length + series.unownedVolumes.length;
-                const percent = total === 0 ? 0 : Math.round((series.ownedVolumes.length / total) * 100);
-                
-                const isComplete = series.unownedVolumes.length === 0 && total > 0;
-                const statusClass = isComplete ? 'status-complete' : 'status-ongoing';
-                const statusText = isComplete ? 'COMPLETED' : `${percent}% COLLECTED`;
-
-                // カード生成
-                const card = document.createElement('div');
-                card.className = `card ${statusClass}`;
-                
-                card.innerHTML = `
-                    <div class="card-header">
-                        <div class="series-title">${series.seriesName}</div>
-                        <div class="badge">${statusText}</div>
-                    </div>
-                    <div class="card-meta">
-                        <span><i class="fa-solid fa-user-pen"></i> ${series.author}</span>
-                        <span><i class="fa-solid fa-tag"></i> ${series.label}</span>
-                    </div>
-                    
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: ${percent}%"></div>
-                    </div>
-
-                    <div class="volumes-section">
-                        <div class="vol-group owned">
-                            <h3><i class="fa-solid fa-check"></i> 所持 (${series.ownedVolumes.length})</h3>
-                            <ul>
-                                ${series.ownedVolumes.map(v => `
-                                    <li title="${v.code}">${v.title.replace(series.seriesName, '').trim() || v.title}</li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                        <div class="vol-group unowned">
-                            <h3><i class="fa-solid fa-cart-shopping"></i> 未所持 (${series.unownedVolumes.length})</h3>
-                            <ul>
-                                ${series.unownedVolumes.length === 0 ? '<li class="none">なし (コンプリート)</li>' : ''}
-                                ${series.unownedVolumes.map(v => `
-                                    <li title="${v.code}">${v.title.replace(series.seriesName, '').trim() || v.title}</li>
-                                `).join('')}
-                            </ul>
-                        </div>
+            if (res.success) {
+                resultDiv.innerHTML = `
+                    <div class="success-box">
+                        <strong>User Created!</strong><br>
+                        ID: <code>${res.newUser.id}</code><br>
+                        Pass: <code>${res.newUser.pass}</code><br>
+                        <span style="font-size:0.8em">※Discordにも通知されました</span>
                     </div>
                 `;
-                container.appendChild(card);
-            });
+            } else {
+                resultDiv.innerHTML = `<span class="error">Error: ${res.message}</span>`;
+            }
+        } catch (e) {
+            resultDiv.innerHTML = `<span class="error">通信エラーが発生しました</span>`;
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add New User';
         }
-
-        // 検索機能
-        function setupSearch(allData) {
-            const searchInput = document.getElementById('searchInput');
-            // イベントリスナーが重複しないように再生成
-            const newInput = searchInput.cloneNode(true);
-            searchInput.parentNode.replaceChild(newInput, searchInput);
-
-            newInput.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
-                const filtered = allData.filter(item => 
-                    item.seriesName.toLowerCase().includes(term) || 
-                    item.author.toLowerCase().includes(term)
-                );
-                
-                // フィルタ結果で再描画（再帰呼び出しにならないよう注意して簡易描画）
-                const container = document.getElementById('series-grid');
-                container.innerHTML = '';
-                
-                if(filtered.length === 0) {
-                    container.innerHTML = '<p>該当する書籍が見つかりませんでした。</p>';
-                    return;
-                }
-                
-                // renderLibraryの一部ロジックを再利用して描画
-                // ※本来はrender関数を分離すべきですが、今回は簡略化のためここでループ処理します
-                // (renderLibraryを呼ぶとイベントリスナーも再セットされてしまうため)
-                filtered.forEach(series => {
-                    // (上のrenderLibrary内のカード生成ロジックと同じものを実行)
-                    // ...コード簡略化のため、実際の実装では renderLibrary に isSearch 引数をつけるなどしてください
-                    // 今回はシンプルに、再度 renderLibrary を呼びますが、
-                    // 無限ループ防止のため setupSearch は条件付きで呼ぶ設計にします
-                    renderCardsOnly(filtered, container);
-                });
-            });
-        }
-
-        // カード描画のみを行うヘルパー関数
-        function renderCardsOnly(data, container) {
-            data.forEach(series => {
-                const total = series.ownedVolumes.length + series.unownedVolumes.length;
-                const percent = total === 0 ? 0 : Math.round((series.ownedVolumes.length / total) * 100);
-                const isComplete = series.unownedVolumes.length === 0 && total > 0;
-                const statusClass = isComplete ? 'status-complete' : 'status-ongoing';
-                const statusText = isComplete ? 'COMPLETED' : `${percent}% COLLECTED`;
-
-                const card = document.createElement('div');
-                card.className = `card ${statusClass}`;
-                
-                card.innerHTML = `
-                    <div class="card-header">
-                        <div class="series-title">${series.seriesName}</div>
-                        <div class="badge">${statusText}</div>
-                    </div>
-                    <div class="card-meta">
-                        <span><i class="fa-solid fa-user-pen"></i> ${series.author}</span>
-                        <span><i class="fa-solid fa-tag"></i> ${series.label}</span>
-                    </div>
-                    
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: ${percent}%"></div>
-                    </div>
-
-                    <div class="volumes-section">
-                        <div class="vol-group owned">
-                            <h3><i class="fa-solid fa-check"></i> 所持 (${series.ownedVolumes.length})</h3>
-                            <ul>
-                                ${series.ownedVolumes.map(v => `
-                                    <li title="${v.code}">${v.title.replace(series.seriesName, '').trim() || v.title}</li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                        <div class="vol-group unowned">
-                            <h3><i class="fa-solid fa-cart-shopping"></i> 未所持 (${series.unownedVolumes.length})</h3>
-                            <ul>
-                                ${series.unownedVolumes.length === 0 ? '<li class="none">なし (コンプリート)</li>' : ''}
-                                ${series.unownedVolumes.map(v => `
-                                    <li title="${v.code}">${v.title.replace(series.seriesName, '').trim() || v.title}</li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-    </script>
-</body>
-</html>
+    }
+</script>

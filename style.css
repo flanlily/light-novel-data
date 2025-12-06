@@ -1,13 +1,12 @@
 :root {
-    --bg-color: #0d1117;        /* GitHub Dark Background */
-    --card-bg: #161b22;         /* GitHub Card Background */
-    --border-color: #30363d;    /* Dark Border */
-    --text-main: #c9d1d9;       /* Main Text */
-    --text-sub: #8b949e;        /* Sub Text */
-    --accent-color: #58a6ff;    /* Blue Accent */
-    --success-color: #238636;   /* Green (Owned) */
-    --danger-color: #da3633;    /* Red (Unowned) */
-    --header-height: 60px;
+    --bg-color: #0d1117;        /* 背景色 */
+    --card-bg: #161b22;         /* カード背景 */
+    --border-color: #30363d;    /* 枠線 */
+    --text-main: #c9d1d9;       /* メイン文字色 */
+    --text-sub: #8b949e;        /* サブ文字色 */
+    --accent-color: #58a6ff;    /* アクセント（青） */
+    --success-color: #238636;   /* 緑（所持） */
+    --danger-color: #da3633;    /* 赤（未所持） */
 }
 
 * {
@@ -17,11 +16,10 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.5;
-    /* 背景画像なし */
 }
 
 /* Container */
@@ -29,15 +27,97 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
 }
+
+/* =========================================
+   Login Overlay
+   ========================================= */
+#login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.login-box input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.login-box input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.login-box button {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.login-box button:hover {
+    opacity: 0.9;
+}
+
+.login-box button:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+#login-error {
+    color: var(--danger-color);
+    margin-top: 15px;
+    display: none;
+}
+
+/* =========================================
+   Main Content
+   ========================================= */
 
 /* Header */
 header {
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
@@ -47,16 +127,23 @@ header .container {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
 }
 
 h1 {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-main);
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.2;
 }
 
-/* Search Box */
+.search-box {
+    width: auto;
+    max-width: 100%;
+}
+
 .search-box input {
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
@@ -64,6 +151,7 @@ h1 {
     padding: 8px 12px;
     border-radius: 6px;
     width: 300px;
+    max-width: 100%;
     transition: 0.2s;
 }
 
@@ -75,12 +163,12 @@ h1 {
 
 /* Main Grid */
 main {
-    padding: 40px 20px;
+    padding: 40px 0;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 20px;
 }
 
@@ -90,23 +178,17 @@ main {
     border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    border-color: var(--text-sub);
-}
-
-/* Card Header */
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .series-title {
@@ -114,6 +196,7 @@ main {
     font-weight: 700;
     color: var(--accent-color);
     line-height: 1.3;
+    width: 100%;
 }
 
 .badge {
@@ -122,9 +205,10 @@ main {
     border-radius: 12px;
     font-weight: 600;
     white-space: nowrap;
-    margin-left: 10px;
     background-color: var(--border-color);
     color: var(--text-sub);
+    margin-bottom: 10px;
+    display: inline-block;
 }
 
 .status-complete .badge {
@@ -133,7 +217,6 @@ main {
     border: 1px solid rgba(35, 134, 54, 0.4);
 }
 
-/* Meta Data */
 .card-meta {
     font-size: 0.85rem;
     color: var(--text-sub);
@@ -149,11 +232,10 @@ main {
     gap: 4px;
 }
 
-/* Progress Bar */
 .progress-bar-container {
-    height: 6px;
+    height: 4px;
     background-color: var(--border-color);
-    border-radius: 3px;
+    border-radius: 2px;
     overflow: hidden;
     margin-bottom: 15px;
 }
@@ -164,25 +246,42 @@ main {
     transition: width 0.5s ease;
 }
 
-/* Volumes Lists */
+/* Volumes Section (Split View) */
 .volumes-section {
     display: flex;
-    gap: 15px;
-    margin-top: auto; /* Push to bottom */
+    flex-direction: row;
+    margin-top: auto;
     font-size: 0.85rem;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
 }
 
 .vol-group {
     flex: 1;
+    width: 50%;
+    padding: 0 10px;
+}
+
+/* Left column border */
+.vol-group:first-child {
+    border-right: 1px solid var(--border-color);
+    padding-left: 0;
+}
+
+.vol-group:last-child {
+    padding-right: 0;
 }
 
 .vol-group h3 {
     font-size: 0.8rem;
     text-transform: uppercase;
     color: var(--text-sub);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 4px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
 
 .vol-group.owned h3 { color: #3fb950; }
@@ -190,33 +289,31 @@ main {
 
 .vol-group ul {
     list-style: none;
-    max-height: 150px;
-    overflow-y: auto;
-    /* Custom Scrollbar */
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-color) transparent;
-}
-
-.vol-group ul::-webkit-scrollbar {
-    width: 4px;
-}
-.vol-group ul::-webkit-scrollbar-thumb {
-    background-color: var(--border-color);
-    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-bottom: 0;
+    justify-content: flex-start;
 }
 
 .vol-group li {
+    width: 100%;
+    border: none;
+    background: transparent;
     padding: 2px 0;
-    border-bottom: 1px solid rgba(48, 54, 61, 0.5);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    border-bottom: 1px dashed rgba(48, 54, 61, 0.5);
+    white-space: normal;
+    font-size: 0.75rem;
 }
 
+.vol-group.owned li { color: #e6ffed; }
+.vol-group.unowned li { color: #ffdce0; }
+
 .vol-group li.none {
+    border: none;
     color: var(--text-sub);
+    text-align: center;
     font-style: italic;
-    opacity: 0.5;
 }
 
 /* Footer */
@@ -229,51 +326,21 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Mobile Responsive Improvements */
+/* Mobile Responsive */
 @media (max-width: 600px) {
-    /* グリッドを1列にする */
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 15px; /* カード間の隙間を少し狭く */
-    }
-
-    /* メインコンテンツの余白調整 */
-    main {
-        padding: 20px 15px;
-    }
-
-    /* ヘッダーの調整 */
+    .container { padding: 0 15px; }
+    .grid { grid-template-columns: 1fr; gap: 15px; }
+    
     header .container {
-        flex-direction: column; /* 縦並びにする */
-        align-items: stretch;   /* 横幅いっぱいに広げる */
-        gap: 15px;
+        flex-direction: column;
+        align-items: stretch;
     }
-
-    /* タイトルを中央寄せ */
-    h1 {
-        text-align: center;
-        font-size: 1.3rem;
-    }
-
-    /* 検索ボックスのスマホ最適化 */
-    .search-box input {
-        width: 100%;
-        font-size: 16px; /* 16px以上にするとiPhoneで入力時にズームされなくなる */
-        padding: 10px;   /* タップしやすいように少し広く */
-    }
-
-    /* カード内の余白を少し詰めて情報量を見やすく */
-    .card {
-        padding: 15px;
-    }
+    h1 { text-align: center; font-size: 1.3rem; }
+    .search-box input { width: 100%; font-size: 16px; }
     
-    .card-header {
-        flex-direction: column; /* 長いタイトル対策 */
-        gap: 5px;
-    }
+    .card { padding: 15px; }
     
-    .badge {
-        margin-left: 0;
-        align-self: flex-start; /* バッジを左寄せに */
-    }
+    /* スマホでも横並びを維持しつつ調整 */
+    .vol-group { padding: 0 5px; }
+    .vol-group li { font-size: 0.7rem; }
 }

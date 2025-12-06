@@ -1677,7 +1677,7 @@
     },
     {
         "seriesName": "ネトゲの嫁が人気アイドルだった ~クール系の彼女は現実でも嫁のつもりでいる~",
-        "totalVolumeCount": 3,
+        "totalVolumeCount": 4,
         "author": "あボーン",
         "illustrator": "館田ダン",
         "label": "オーバーラップ文庫",
@@ -1695,18 +1695,9 @@
                 "code": "あ-14-03"
             }
         ],
-        "unownedVolumes": []
-    },
-    {
-        "seriesName": "ネトゲの嫁が人気アイドルだった  ~クール系の彼女は現実でも嫁のつもりでいる~",
-        "totalVolumeCount": 1,
-        "author": "あボーン",
-        "illustrator": "館田ダン",
-        "label": "オーバーラップ文庫",
-        "ownedVolumes": [],
         "unownedVolumes": [
             {
-                "title": "ネトゲの嫁が人気アイドルだった\n ~クール系の彼女は現実でも嫁のつもりでいる~ 4",
+                "title": "ネトゲの嫁が人気アイドルだった\n~クール系の彼女は現実でも嫁のつもりでいる~ 4",
                 "code": "あ-14-04"
             }
         ]

@@ -1,134 +1,483 @@
 <style>
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f7f6;
-  color: #333;
-  margin: 0;
-  padding: 0;
+:root {
+    --bg-color: #0d1117;        /* 背景色 (GitHub Dark) */
+    --card-bg: #161b22;         /* カード背景 */
+    --border-color: #30363d;    /* 枠線 */
+    --text-main: #c9d1d9;       /* メイン文字色 */
+    --text-sub: #8b949e;        /* サブ文字色 */
+    --accent-color: #58a6ff;    /* アクセント（青） */
+    --success-color: #238636;   /* 緑（所持・成功） */
+    --danger-color: #da3633;    /* 赤（未所持・エラー） */
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+/* Container (幅の統一管理) */
 .container {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* =========================================
+    Login Overlay (ログイン画面)
+    ========================================= */
+#login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.login-box p {
+    color: var(--text-sub);
+    margin-bottom: 20px;
+}
+
+.login-box input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.login-box input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.login-box button {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.login-box button:hover {
+    opacity: 0.9;
+}
+
+.login-box button:disabled {
+    background-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+#login-error {
+    color: var(--danger-color);
+    margin-top: 15px;
+    display: none;
+}
+
+/* =========================================
+    Admin Panel (管理者パネル)
+    ========================================= */
+#admin-panel {
+    background-color: #1c2128;
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.admin-box {
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.admin-box h3 {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+.admin-box button {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.admin-box button:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.success-box {
+    background-color: rgba(35, 134, 54, 0.2);
+    border: 1px solid var(--success-color);
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    color: #e6ffed;
+    font-family: monospace;
+}
+
+.admin-box .error {
+    color: var(--danger-color);
+    font-weight: bold;
+}
+
+/* =========================================
+    Main Content (メイン画面)
+    ========================================= */
+
+/* Header */
+header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 h1 {
-  text-align: center;
-  color: #00796b;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.2;
 }
 
-h2 {
-  color: #009688;
-  border-left: 5px solid #009688;
-  padding-left: 10px;
-  margin-top: 25px;
+/* Header Controls (Search + Logout) */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.summary {
-  font-size: 1.1em;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #e0f2f1;
-  border-radius: 4px;
+.search-box {
+    width: auto;
+    max-width: 100%;
 }
 
-/* タブスタイル */
-.tabs {
-  display: flex;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #e0e0e0;
+.search-box input {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 8px 12px;
+    border-radius: 6px;
+    width: 300px;
+    max-width: 100%;
+    transition: 0.2s;
 }
 
+.search-box input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+}
+
+#logoutBtn {
+    background-color: #21262d;
+    color: #f85149;
+    border: 1px solid #30363d;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    height: 40px; /* 検索ボックスと高さを合わせる */
+}
+
+#logoutBtn:hover {
+    background-color: #30363d;
+    border-color: #f85149;
+}
+
+/* Tab Controls (追加) */
+#tab-controls {
+    justify-content: flex-start;
+    padding-bottom: 0;
+    border-bottom: none;
+}
 .tab-button {
-  background-color: #eee;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 4px 4px 0 0;
-  margin-right: 5px;
-  border: 1px solid #e0e0e0;
-  border-bottom: none;
+    background-color: var(--card-bg);
+    color: var(--text-sub);
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+    border-radius: 6px 6px 0 0;
+    margin-right: 5px;
 }
 
 .tab-button.active {
-  background-color: #009688;
-  color: #fff;
-  border-color: #009688;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    border-color: var(--border-color);
+    border-bottom-color: var(--bg-color);
+    font-weight: bold;
 }
 
-.tab-content {
-  display: none;
+
+/* Main Grid */
+main {
+    padding: 20px 0; /* 上下の余白のみ設定 */
 }
 
-.tab-content.active {
-  display: block;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+    background-color: var(--bg-color); /* タブ下と背景色を合わせる */
+    padding-top: 20px;
 }
 
-/* データリストスタイル */
-.data-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+/* Card Style */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-.series-card {
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-left: 5px solid;
-  transition: transform 0.2s;
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.series-card:hover {
-  transform: translateY(-3px);
+.series-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1.3;
+    width: 100%;
 }
 
-.series-card.ongoing {
-  border-left-color: #ff9800; /* オレンジ: 連載中 */
-  background-color: #fff3e0;
+.badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    background-color: var(--border-color);
+    color: var(--text-sub);
+    margin-bottom: 10px;
+    display: inline-block;
 }
 
-.series-card.completed {
-  border-left-color: #4caf50; /* 緑: 完結 */
-  background-color: #e8f5e9;
+.status-complete .badge {
+    background-color: rgba(35, 134, 54, 0.2);
+    color: #3fb950;
+    border: 1px solid rgba(35, 134, 54, 0.4);
 }
 
-.series-card.unbought {
-  border-left-color: #f44336; /* 赤: 最新巻未購入 */
-  background-color: #ffebee;
-  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+.card-meta {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.series-card h3 {
-  margin-top: 0;
-  color: #333;
-  font-size: 1.1em;
+.card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.series-card p {
-  margin: 5px 0;
-  font-size: 0.9em;
+.progress-bar-container {
+    height: 4px;
+    background-color: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 15px;
 }
 
-.series-card strong {
-  font-weight: 600;
-  color: #555;
+.progress-bar {
+    height: 100%;
+    background-color: var(--success-color);
+    transition: width 0.5s ease;
 }
 
-.loading-message {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 30px;
-  font-size: 1.2em;
-  color: #999;
+/* Volumes Section (Split View - 2列表示) */
+.volumes-section {
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+    font-size: 0.85rem;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.vol-group {
+    flex: 1;
+    width: 50%;
+    padding: 0 10px;
+}
+
+/* 左カラムに右ボーダー */
+.vol-group:first-child {
+    border-right: 1px solid var(--border-color);
+    padding-left: 0;
+}
+
+.vol-group:last-child {
+    padding-right: 0;
+}
+
+.vol-group h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.vol-group.owned h3 { color: #3fb950; }
+.vol-group.unowned h3 { color: #f85149; }
+
+.vol-group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-bottom: 0;
+    justify-content: flex-start;
+}
+
+.vol-group li {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 2px 0;
+    border-bottom: 1px dashed rgba(48, 54, 61, 0.5);
+    white-space: normal;
+    font-size: 0.75rem;
+}
+
+.vol-group.owned li { color: #e6ffed; }
+.vol-group.unowned li { color: #ffdce0; }
+
+.vol-group li.none {
+    border: none;
+    color: var(--text-sub);
+    text-align: center;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+}
+
+/* Mobile Responsive (スマホ対応) */
+@media (max-width: 600px) {
+    /* コンテナ余白統一 */
+    .container { padding: 0 15px; }
+    
+    /* グリッド1列化 */
+    .grid { grid-template-columns: 1fr; gap: 15px; }
+    
+    /* ヘッダー調整 */
+    header .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    h1 { text-align: center; font-size: 1.3rem; }
+    
+    .header-controls {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .search-box { flex-grow: 1; }
+    .search-box input { width: 100%; font-size: 16px; }
+    
+    .mobile-hide { display: none; } /* ログアウトのテキストを隠す */
+    #logoutBtn { padding: 0 15px; }
+    
+    .card { padding: 15px; }
+    
+    .vol-group { padding: 0 5px; }
+    .vol-group li { font-size: 0.7rem; }
 }
 </style>

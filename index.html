@@ -1,353 +1,392 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <base target="_top">
-  <title>ラノベ・漫画コレクション</title>
-  <?= include('style'); ?>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Novel Collection</title>
+    <?= include('style'); ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>📚 コレクション状況</h1>
 
-    <div id="login-section">
-      <h2>ログイン</h2>
-      <div id="login-error" class="error-message"></div>
-      <form id="login-form">
-        <div class="form-group">
-            <label for="user-id">ID:</label>
-            <input type="text" id="user-id" name="id" required>
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2><i class="fa-solid fa-lock"></i> Restricted Access</h2>
+            <p>認証情報を入力してください</p>
+            <input type="text" id="userIdInput" placeholder="User ID">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button onclick="performLogin()">Login</button>
+            <p id="login-error" style="display:none;">エラーメッセージ</p>
         </div>
-        <div class="form-group">
-            <label for="user-pass">パスワード:</label>
-            <input type="password" id="user-pass" name="pass" required>
-        </div>
-        <button type="submit" class="submit-button">ログイン</button>
-      </form>
     </div>
-    
-    <div id="collection-section" style="display: none;">
-      <div class="header-controls">
-        <span id="welcome-message"></span>
-        <button onclick="handleLogout()" class="logout-button">ログアウト</button>
-      </div>
 
-      <div class="tabs">
-        <button class="tab-button active" onclick="showTab('lanobe')">ラノベデータ (Sheet1)</button>
-        <button class="tab-button" onclick="showTab('manga')">漫画データ (Sheet3)</button>
-      </div>
+    <header>
+        <div class="container">
+            <h1><i class="fa-solid fa-book-open"></i> Light Novel Data</h1>
+            
+            <div class="header-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="検索..." oninput="setupSearch()">
+                </div>
+                <button id="logoutBtn" onclick="performLogout()" style="display:none;">
+                    <i class="fa-solid fa-right-from-bracket"></i> <span class="mobile-hide">Logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-      <div id="lanobe-tab" class="tab-content active">
-        <h2>ラノベシリーズ進捗</h2>
-        <p id="lanobe-summary" class="summary"></p>
-        <div id="lanobe-list" class="data-list">
-          <p class="loading-message">ラノベデータを読み込み中です...</p>
+    <div id="admin-panel" style="display: none;">
+        <div class="container">
+            <div class="admin-box">
+                <h3><i class="fa-solid fa-user-shield"></i> Admin Menu</h3>
+                <button onclick="addNewUser()" id="addUserBtn">
+                    <i class="fa-solid fa-plus"></i> Add New User
+                </button>
+                <div id="admin-result"></div>
+            </div>
         </div>
-      </div>
-      
-      <div id="manga-tab" class="tab-content">
-        <h2>漫画シリーズ進捗</h2>
-        <p id="manga-summary" class="summary"></p>
-        <div id="manga-list" class="data-list">
-          <p class="loading-message">漫画データを読み込み中です...</p>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <script>
-    // ----------------------------------------------------
-    // グローバル変数と初期設定
-    // ----------------------------------------------------
-    let lanobeData = [];
-    let mangaData = [];
-    let sessionToken = localStorage.getItem('sessionToken');
-    let userId = localStorage.getItem('userId');
-    let isAdmin = localStorage.getItem('isAdmin') === 'true';
-
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('login-form').addEventListener('submit', handleLoginSubmit);
+    <main class="container">
+        <div id="time-display" style="display:none; text-align:right; font-size:0.8rem; color:#8b949e; margin-bottom:10px;"></div>
         
-        // ページロード時にセッションチェック
-        if (sessionToken && userId) {
-            handleHeartbeat();
-        } else {
-            showLogin();
-        }
-    });
+        <div id="tab-controls" style="display: none; border-bottom: 1px solid var(--border-color); margin-bottom: 20px;">
+            <button class="tab-button active" onclick="switchTab('lanobe')">ラノベデータ</button>
+            <button class="tab-button" onclick="switchTab('manga')">漫画データ</button>
+        </div>
 
-    // ----------------------------------------------------
-    // ログイン処理
-    // ----------------------------------------------------
-    function handleLoginSubmit(e) {
-        e.preventDefault();
-        const id = document.getElementById('user-id').value;
-        const pass = document.getElementById('user-pass').value;
+        <div id="series-grid-lanobe" class="grid active-grid">
+            <div class="loading">Loading...</div>
+        </div>
+        <div id="series-grid-manga" class="grid" style="display: none;">
+            <div class="loading">Loading...</div>
+        </div>
         
-        document.getElementById('login-error').textContent = 'ログイン中...';
+    </main>
+
+    <footer>
+        <div class="container"><p>Data provided by GAS</p></div>
+    </footer>
+
+    <script>
+        const GAS_API_URL = "<?= ScriptApp.getService().getUrl() ?>"; // GAS URLを自動取得
         
-        google.script.run
-            .withSuccessHandler(onLoginSuccess)
-            .withFailureHandler(onLoginFailure)
-            .handleLogin(id, pass);
-    }
-    
-    function onLoginSuccess(response) {
-        const errorDiv = document.getElementById('login-error');
-        if (response.success) {
-            // セッション情報を保存
-            localStorage.setItem('sessionToken', response.token);
-            localStorage.setItem('userId', document.getElementById('user-id').value);
-            localStorage.setItem('isAdmin', response.isAdmin);
-            
-            sessionToken = response.token;
-            userId = document.getElementById('user-id').value;
-            isAdmin = response.isAdmin;
-            
-            errorDiv.textContent = '';
-            showCollection();
-            
-            // データ取得
-            google.script.run.withSuccessHandler(onDataLoaded).getData();
-        } else {
-            errorDiv.textContent = 'エラー: ' + response.message;
-        }
-    }
+        let sessionTimer = null;
+        let heartbeatInterval = null;
+        const SESSION_LIMIT_MS = 10 * 60 * 1000; // 10分
+        let currentData = { lanobe: [], manga: [] }; // データを格納するオブジェクト
+        let currentView = 'lanobe'; // 現在表示中のタブ
 
-    function onLoginFailure(error) {
-         document.getElementById('login-error').textContent = 'ログインリクエスト中にエラーが発生しました。';
-         console.error('Login Error:', error);
-    }
-    
-    // ----------------------------------------------------
-    // セクション表示制御
-    // ----------------------------------------------------
-    function showLogin() {
-        document.getElementById('login-section').style.display = 'block';
-        document.getElementById('collection-section').style.display = 'none';
-        document.getElementById('login-error').textContent = '';
-    }
-    
-    function showCollection() {
-        document.getElementById('login-section').style.display = 'none';
-        document.getElementById('collection-section').style.display = 'block';
-        document.getElementById('welcome-message').textContent = `ようこそ、${userId}さん。`;
-    }
-
-    // ----------------------------------------------------
-    // ハートビート / ログアウト処理
-    // ----------------------------------------------------
-    function handleHeartbeat() {
-        google.script.run
-            .withSuccessHandler(response => {
-                if (response.status === 'ok') {
-                    showCollection();
-                    // データがまだロードされていない場合はロードを試みる
-                    if (lanobeData.length === 0 && mangaData.length === 0) {
-                        google.script.run.withSuccessHandler(onDataLoaded).getData();
-                    }
+        window.onload = function() {
+            const token = sessionStorage.getItem('token');
+            const userId = sessionStorage.getItem('userId');
+            
+            if (token && userId) {
+                // セッション復帰
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('logoutBtn').style.display = 'inline-block';
+                document.getElementById('tab-controls').style.display = 'flex';
+                
+                const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
+                if (isAdmin) {
+                    document.getElementById('admin-panel').style.display = 'block';
                 } else {
-                    handleLogout(true); // サーバー側でセッション切れ
+                    startSessionTimer();
                 }
-            })
-            .withFailureHandler(handleLogout)
-            .handleHeartbeat(userId, sessionToken);
-    }
-    
-    function handleLogout(noApiCall) {
-        if (!noApiCall) {
-            google.script.run.handleLogout(userId, sessionToken); // サーバー側でもセッションを無効化
+                
+                // データロードとハートビート
+                loadInitialData(); 
+                startHeartbeat(); 
+            } else {
+                document.querySelector('.loading').style.display = 'none';
+            }
+            
+            // 検索ボックスのイベントリスナーを初期設定（データがロードされたら再設定される）
+            document.getElementById('searchInput').addEventListener('input', setupSearch);
+        };
+
+        async function loadInitialData() {
+            try {
+                // GASのgetData関数を呼び出して全データ（ラノベ、漫画）を取得
+                const data = await google.script.run.withFailureHandler(console.error).getData();
+                if (data && data.lanobe) {
+                    currentData = data;
+                    renderLibrary(currentData);
+                } else {
+                    throw new Error("データの取得に失敗しました。");
+                }
+            } catch (e) {
+                console.error("初期データロードエラー:", e);
+                document.querySelector('.loading').textContent = 'データエラー';
+            }
+        }
+
+
+        // ----------------------------------------------------
+        // ログイン・ログアウト・ハートビート (元のリポジトリのAPI呼び出し方式に合わせた)
+        // ----------------------------------------------------
+
+        async function performLogin() {
+            const id = document.getElementById('userIdInput').value;
+            const pass = document.getElementById('passwordInput').value;
+            const btn = document.querySelector('.login-box button');
+            const errorMsg = document.getElementById('login-error');
+
+            if(!id || !pass) return;
+
+            btn.textContent = "Verifying...";
+            btn.disabled = true;
+            errorMsg.style.display = 'none';
+
+            try {
+                const res = await fetch(GAS_API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'login', id: id, pass: pass })
+                });
+                const result = await res.json();
+
+                if (result.success) {
+                    // 保存
+                    sessionStorage.setItem('token', result.token);
+                    sessionStorage.setItem('userId', id);
+                    sessionStorage.setItem('isAdmin', result.isAdmin);
+                    
+                    // ログイン成功時、データは doGET ではなく doPost から取得される
+                    sessionStorage.setItem('libraryData', JSON.stringify(result.data));
+                    if(result.isAdmin) sessionStorage.setItem('authPass', pass);
+
+                    // UI更新
+                    document.getElementById('login-overlay').style.display = 'none';
+                    document.getElementById('logoutBtn').style.display = 'inline-block';
+                    document.getElementById('tab-controls').style.display = 'flex';
+                    
+                    if (result.isAdmin) {
+                        document.getElementById('admin-panel').style.display = 'block';
+                    } else {
+                        startSessionTimer(); // 10分タイマー開始
+                    }
+
+                    // ログイン時のデータをレンダリング
+                    renderLibrary(result.data);
+                    startHeartbeat(); 
+
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (e) {
+                errorMsg.textContent = e.message;
+                errorMsg.style.display = 'block';
+            } finally {
+                btn.textContent = "Login";
+                btn.disabled = false;
+            }
+        }
+
+        async function performLogout() {
+            const id = sessionStorage.getItem('userId');
+            const token = sessionStorage.getItem('token');
+            
+            clearInterval(sessionTimer);
+            clearInterval(heartbeatInterval);
+
+            // サーバーへログアウト通知 (待たなくて良い)
+            fetch(GAS_API_URL, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'logout', id: id, token: token })
+            });
+
+            sessionStorage.clear();
+            location.reload();
+        }
+
+        function startSessionTimer() {
+            const display = document.getElementById('time-display');
+            display.style.display = 'block';
+            let remaining = SESSION_LIMIT_MS;
+
+            sessionTimer = setInterval(() => {
+                remaining -= 1000;
+                const min = Math.floor(remaining / 60000);
+                const sec = Math.floor((remaining % 60000) / 1000);
+                display.textContent = `Session expires in: ${min}:${sec.toString().padStart(2, '0')}`;
+
+                if (remaining <= 0) {
+                    clearInterval(sessionTimer);
+                    alert("ログイン有効時間(10分)が経過しました。自動ログアウトします。");
+                    performLogout();
+                }
+            }, 1000);
+        }
+
+        function startHeartbeat() {
+            heartbeatInterval = setInterval(async () => {
+                const id = sessionStorage.getItem('userId');
+                const token = sessionStorage.getItem('token');
+                if (!id || !token) return;
+
+                try {
+                    const res = await fetch(GAS_API_URL, {
+                        method: 'POST',
+                        body: JSON.stringify({ action: 'heartbeat', id: id, token: token })
+                    });
+                    const result = await res.json();
+
+                    if (result.status === 'banned' || result.status === 'logout') {
+                        clearInterval(heartbeatInterval);
+                        alert(result.status === 'banned' ? "【警告】\nアカウントが停止されました。" : "セッションが無効になりました。");
+                        sessionStorage.clear();
+                        location.reload();
+                    }
+                } catch (e) {
+                    console.log("Heartbeat failed", e);
+                }
+            }, 30000); 
+        }
+
+        // ----------------------------------------------------
+        // UI & データ処理
+        // ----------------------------------------------------
+
+        function switchTab(target) {
+            currentView = target;
+            const grids = { lanobe: document.getElementById('series-grid-lanobe'), manga: document.getElementById('series-grid-manga') };
+            const buttons = document.querySelectorAll('.tab-button');
+            
+            for (const key in grids) {
+                grids[key].style.display = key === target ? 'grid' : 'none';
+            }
+            buttons.forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('onclick').includes(target));
+            });
+            
+            // タブ切り替え時に検索を再適用
+            setupSearch();
+        }
+
+        function renderLibrary(data) {
+            // data.lanobeとdata.mangaが存在しない場合を考慮し、セッションストレージから復元
+            const lanobeData = data.lanobe || JSON.parse(sessionStorage.getItem('libraryData')).lanobe || [];
+            const mangaData = data.manga || JSON.parse(sessionStorage.getItem('libraryData')).manga || [];
+            
+            renderGrid('lanobe', lanobeData);
+            renderGrid('manga', mangaData);
+            
+            // 検索セットアップを再実行
+            setupSearch(); 
         }
         
-        localStorage.removeItem('sessionToken');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('isAdmin');
-        sessionToken = null;
-        userId = null;
-        isAdmin = false;
-        
-        showLogin();
-    }
-
-
-    // ----------------------------------------------------
-    // データロード後の処理 (getData() の成功ハンドラ)
-    // ----------------------------------------------------
-    function onDataLoaded(data) {
-      lanobeData = data.lanobe;
-      mangaData = data.manga; 
-      
-      renderData('lanobe');
-      renderData('manga');
-      
-      document.querySelectorAll('.loading-message').forEach(el => el.style.display = 'none');
-    }
-
-    // ----------------------------------------------------
-    // タブ切り替え処理
-    // ----------------------------------------------------
-    function showTab(tabName) {
-      const tabs = ['lanobe', 'manga'];
-      tabs.forEach(tab => {
-        document.getElementById(tab + '-tab').classList.remove('active');
-        document.querySelector(`.tab-button[onclick="showTab('${tab}')"]`).classList.remove('active');
-      });
-      
-      document.getElementById(tabName + '-tab').classList.add('active');
-      document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`).classList.add('active');
-    }
-
-    // ----------------------------------------------------
-    // データ描画処理
-    // ----------------------------------------------------
-    function renderData(dataType) {
-      const data = (dataType === 'lanobe') ? lanobeData : mangaData;
-      const listContainer = document.getElementById(dataType + '-list');
-      const summaryElement = document.getElementById(dataType + '-summary');
-      listContainer.innerHTML = ''; 
-      
-      if (data.length < 2) {
-        listContainer.innerHTML = '<p>データがありません。スプレッドシートを確認してください。</p>';
-        summaryElement.innerHTML = `全0シリーズ中、**0シリーズが完結**しています。`;
-        return;
-      }
-
-      // ヘッダー行を除外
-      const header = data[0];
-      const bookEntries = data.slice(1);
-      
-      const seriesMap = processSeries(bookEntries, header);
-      
-      let html = '';
-      let totalSeries = 0;
-      let completedSeries = 0;
-
-      for (const [seriesName, info] of seriesMap.entries()) {
-        totalSeries++;
-        
-        const titleIndex = header.indexOf('作品名');
-        const purchaseIndex = header.indexOf('購入未購入');
-        
-        // 最新巻の特定
-        const latestBook = info.books.reduce((a, b) => {
-            const aVol = parseVolume(a[titleIndex]);
-            const bVol = parseVolume(b[titleIndex]);
-            return bVol > aVol ? b : a;
-        });
-
-        const isLatestUnbought = latestBook[purchaseIndex] === '未所持';
-        const latestVolume = parseVolume(latestBook[titleIndex]);
-        const status = '連載中'; // 簡易表示
-
-        html += `
-          <div class="series-card ${status === '連載中' ? 'ongoing' : 'completed'} ${isLatestUnbought ? 'unbought' : ''}">
-            <h3>${seriesName} (${latestVolume === 0 ? '外伝など' : latestVolume + '巻'})</h3>
-            <p><strong>ステータス:</strong> ${status}</p>
-            <p><strong>最新巻:</strong> ${latestBook[titleIndex]}</p>
-            <p><strong>購入状況:</strong> ${isLatestUnbought ? '未購入' : '購入済'}</p>
-          </div>
-        `;
-      }
-
-      summaryElement.innerHTML = `全${totalSeries}シリーズ中、**${completedSeries}シリーズが完結**しています。`;
-      listContainer.innerHTML = html;
-    }
-
-    // ----------------------------------------------------
-    // シリーズ集計ロジック
-    // ----------------------------------------------------
-    function processSeries(bookEntries, header) {
-      const titleIndex = header.indexOf('作品名');
-      const seriesMap = new Map();
-
-      bookEntries.forEach(book => {
-        const fullTitle = book[titleIndex];
-        const seriesInfo = getSeriesNameAndVolume(fullTitle);
-        const seriesName = seriesInfo.series;
-        
-        if (!seriesName) return;
-
-        if (!seriesMap.has(seriesName)) {
-          seriesMap.set(seriesName, {
-            books: [],
-            isCompleted: false
-          });
-        }
-        seriesMap.get(seriesName).books.push(book);
-      });
-
-      return seriesMap;
-    }
-
-    // ----------------------------------------------------
-    // タイトルからシリーズ名と巻数を抽出するコアロジック
-    // ----------------------------------------------------
-    function getSeriesNameAndVolume(fullTitle) {
-      let title = fullTitle.trim();
-      let volume = 0;
-      let seriesName = title;
-      
-      // 1. 青春ブタ野郎は...の特殊処理
-      if (title.startsWith('青春ブタ野郎は')) {
-          return { series: '青春ブタ野郎は', volume: parseVolume(title) };
-      }
-
-      // 2. 巻数/ナンバリングのパターンを削除 (シリーズ名抽出のため)
-      const volumePatterns = [
-        /(\s*[Ff]lag\s*\d+(\.\d+)?[\.\:]?.*)$/, 
-        /(\s*#\d+\s*.*)$/, 
-        /(\s*([0-9]+\.[0-9]+))\s*$/, 
-        /(\s*その\s*([0-9]+))\s*$/, 
-        /(\s*(\d+))[\s\-\_\.巻部]?(.*)$/ 
-      ];
-
-      for (let pattern of volumePatterns) {
-        const match = title.match(pattern);
-        if (match) {
-          seriesName = title.replace(match[0], '').trim();
-          break;
-        }
-      }
-      
-      // 3. 最終的な巻数の取得（表示用）
-      volume = parseVolume(fullTitle);
-      
-      // 4. その他のシリーズ名の正規化
-      const baseTitles = [
-          '継母の連れ子が元カノだった', '時々ボソッとロシア語でデレる隣のアーリャさん', 
-          'お隣の天使様にいつの間にか駄目人間にされていた件', '教え子に脅迫されるのは犯罪ですか?'
-      ];
-      for (const base of baseTitles) {
-          if (seriesName.startsWith(base)) {
-              seriesName = base;
-              break;
-          }
-      }
-      
-      return { series: seriesName.replace(/[^\s\S]*$/, '').trim(), volume: volume };
-    }
-
-    // ----------------------------------------------------
-    // 巻数パースヘルパー関数 (表示用)
-    // ----------------------------------------------------
-    function parseVolume(title) {
-        let volume = 0;
-        
-        if (title.includes('SS') || title.includes('アートワークス') || title.includes('99.9') || title.includes('外典')) {
-             return 0;
+        function renderGrid(dataType, seriesList) {
+            const container = document.getElementById(`series-grid-${dataType}`);
+            container.innerHTML = '';
+            
+            if (!seriesList || seriesList.length === 0) {
+                container.innerHTML = '<p>データがありません。</p>';
+                return;
+            }
+            
+            seriesList.forEach(series => {
+                const total = series.ownedVolumes.length + series.unownedVolumes.length;
+                const percent = total === 0 ? 0 : Math.round((series.ownedVolumes.length / total) * 100);
+                const isComplete = series.unownedVolumes.length === 0 && total > 0;
+                const statusClass = isComplete ? 'status-complete' : 'status-ongoing';
+                const statusText = isComplete ? 'COMPLETED' : `${percent}% COLLECTED`;
+                
+                const card = document.createElement('div');
+                card.className = `card ${statusClass}`;
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="series-title">${series.seriesName}</div>
+                        <div class="badge">${statusText}</div>
+                    </div>
+                    <div class="card-meta">
+                        <span><i class="fa-solid fa-user-pen"></i> ${series.author}</span>
+                        <span><i class="fa-solid fa-tag"></i> ${series.label}</span>
+                    </div>
+                    <div class="progress-bar-container"><div class="progress-bar" style="width: ${percent}%"></div></div>
+                    <div class="volumes-section">
+                        <div class="vol-group owned">
+                            <h3>所持 (${series.ownedVolumes.length})</h3>
+                            <ul>${series.ownedVolumes.map(v => `<li title="${v.code}">${v.title.replace(series.seriesName,'').trim()||v.title}</li>`).join('')}</ul>
+                        </div>
+                        <div class="vol-group unowned">
+                            <h3>未所持 (${series.unownedVolumes.length})</h3>
+                            <ul>${series.unownedVolumes.length===0?'<li class="none">なし</li>':series.unownedVolumes.map(v => `<li title="${v.code}">${v.title.replace(series.seriesName,'').trim()||v.title}</li>`).join('')}</ul>
+                        </div>
+                    </div>`;
+                container.appendChild(card);
+            });
         }
         
-        if (title.includes('Flag') || title.includes('時間目') || title.includes('#')) {
-             const numMatch = title.match(/\d+/);
-             return numMatch ? parseFloat(numMatch[0]) : 1;
+        // ----------------------------------------------------
+        // 検索ロジック
+        // ----------------------------------------------------
+        let libraryDataCache = {};
+        
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const term = searchInput.value.toLowerCase();
+            
+            // 初回実行時にデータセットアップ
+            if (Object.keys(libraryDataCache).length === 0) {
+                const data = JSON.parse(sessionStorage.getItem('libraryData'));
+                if (data) {
+                    libraryDataCache = data;
+                } else {
+                    return;
+                }
+            }
+
+            const dataToSearch = (currentView === 'lanobe') ? libraryDataCache.lanobe : libraryDataCache.manga;
+            const targetGridId = `series-grid-${currentView}`;
+            const container = document.getElementById(targetGridId);
+            
+            // 検索フィルター
+            const filteredData = dataToSearch.filter(series => 
+                series.seriesName.toLowerCase().includes(term) || 
+                series.author.toLowerCase().includes(term) ||
+                series.label.toLowerCase().includes(term)
+            );
+
+            // 検索結果のレンダリング
+            container.innerHTML = '';
+            if (filteredData.length === 0) {
+                container.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-sub);">「${term}」に一致するシリーズは見つかりませんでした。</p>`;
+            } else {
+                renderGrid(currentView, filteredData);
+            }
         }
         
-        const volMatch = title.match(/(\d+(\.\d+)?)(?:\s*巻|$)/);
-        if (volMatch) {
-            volume = parseFloat(volMatch[1]);
-        }
-        return volume;
-    }
+        // ----------------------------------------------------
+        // Admin Tool (仮)
+        // ----------------------------------------------------
+        async function addNewUser() {
+            const btn = document.getElementById('addUserBtn');
+            const resultDiv = document.getElementById('admin-result');
+            const myId = sessionStorage.getItem('userId');
+            const myPass = sessionStorage.getItem('authPass'); 
 
-  </script>
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+            
+            try {
+                const res = await fetch(GAS_API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'add_user', requesterId: myId, requesterPass: myPass })
+                });
+                const r = await res.json();
+                if(r.success) {
+                    resultDiv.innerHTML = `<div class="success-box">User: ${r.newUser.id}<br>Pass: ${r.newUser.pass}</div>`;
+                } else {
+                    resultDiv.innerHTML = `<span class="error">${r.message}</span>`;
+                }
+            } catch(e) {
+                resultDiv.innerHTML = "Error";
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add New User';
+            }
+        }
+    </script>
 </body>
 </html>

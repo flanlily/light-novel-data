@@ -8,25 +8,44 @@
 <body>
   <div class="container">
     <h1>📚 コレクション状況</h1>
-    
-    <div class="tabs">
-      <button class="tab-button active" onclick="showTab('lanobe')">ラノベデータ (Sheet1)</button>
-      <button class="tab-button" onclick="showTab('manga')">漫画データ (Sheet3)</button>
-    </div>
 
-    <div id="lanobe-tab" class="tab-content active">
-      <h2>ラノベシリーズ進捗</h2>
-      <p id="lanobe-summary" class="summary"></p>
-      <div id="lanobe-list" class="data-list">
-        <p class="loading-message">ラノベデータを読み込み中です...</p>
-      </div>
+    <div id="login-section" style="text-align: center; margin-top: 50px;">
+      <h2>ログイン</h2>
+      <div id="login-error" style="color: red; margin-bottom: 10px;"></div>
+      <form id="login-form">
+        <label for="user-id">ID:</label>
+        <input type="text" id="user-id" name="id" required><br><br>
+        <label for="user-pass">パスワード:</label>
+        <input type="password" id="user-pass" name="pass" required><br><br>
+        <button type="submit">ログイン</button>
+      </form>
     </div>
     
-    <div id="manga-tab" class="tab-content">
-      <h2>漫画シリーズ進捗</h2>
-      <p id="manga-summary" class="summary"></p>
-      <div id="manga-list" class="data-list">
-        <p class="loading-message">漫画データを読み込み中です...</p>
+    <div id="collection-section" style="display: none;">
+      <div style="text-align: right; margin-bottom: 15px;">
+        <span id="welcome-message"></span>
+        <button onclick="handleLogout()">ログアウト</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-button active" onclick="showTab('lanobe')">ラノベデータ (Sheet1)</button>
+        <button class="tab-button" onclick="showTab('manga')">漫画データ (Sheet3)</button>
+      </div>
+
+      <div id="lanobe-tab" class="tab-content active">
+        <h2>ラノベシリーズ進捗</h2>
+        <p id="lanobe-summary" class="summary"></p>
+        <div id="lanobe-list" class="data-list">
+          <p class="loading-message">ラノベデータを読み込み中です...</p>
+        </div>
+      </div>
+      
+      <div id="manga-tab" class="tab-content">
+        <h2>漫画シリーズ進捗</h2>
+        <p id="manga-summary" class="summary"></p>
+        <div id="manga-list" class="data-list">
+          <p class="loading-message">漫画データを読み込み中です...</p>
+        </div>
       </div>
     </div>
   </div>
@@ -37,18 +56,135 @@
     // ----------------------------------------------------
     let lanobeData = [];
     let mangaData = [];
+    let sessionToken = localStorage.getItem('sessionToken');
+    let userId = localStorage.getItem('userId');
+    let isAdmin = localStorage.getItem('isAdmin') === 'true';
 
     document.addEventListener('DOMContentLoaded', function() {
-      // GASのgetData関数を呼び出し
-      google.script.run.withSuccessHandler(onDataLoaded).getData();
+        document.getElementById('login-form').addEventListener('submit', handleLoginSubmit);
+        
+        // ページロード時にセッションチェック
+        if (sessionToken && userId) {
+            handleHeartbeat();
+        } else {
+            showLogin();
+        }
     });
 
     // ----------------------------------------------------
-    // データロード後の処理
+    // ログイン処理
+    // ----------------------------------------------------
+    function handleLoginSubmit(e) {
+        e.preventDefault();
+        const id = document.getElementById('user-id').value;
+        const pass = document.getElementById('user-pass').value;
+        
+        // ログインAPI呼び出し (doPostで処理される)
+        const params = { action: 'login', id: id, pass: pass };
+        
+        // GASのdoPostは直接呼び出せないため、ここではサーバーサイドのdoPostを経由する
+        // 簡易化のため、ここでは直接データ取得関数を呼ぶ代替ロジックを使用します
+        
+        // ★★★ 認証ロジックの代替（本来はdoPostを呼び出す必要があります） ★★★
+        // 簡易的に直接データ取得（公開ページとする）か、 doPostに合わせた実装が必要です。
+        // ここでは、ユーザーの元の意図に合わせ、ログイン状態を模擬し、getData()を呼び出します。
+        
+        google.script.run
+            .withSuccessHandler(onLoginSuccess)
+            .withFailureHandler(onLoginFailure)
+            .handleLogin(id, pass); // code.gsのhandleLoginを呼び出す
+    }
+    
+    function onLoginSuccess(response) {
+        const errorDiv = document.getElementById('login-error');
+        if (response.success) {
+            // セッション情報を保存
+            localStorage.setItem('sessionToken', response.token);
+            localStorage.setItem('userId', document.getElementById('user-id').value);
+            localStorage.setItem('isAdmin', response.isAdmin);
+            
+            sessionToken = response.token;
+            userId = document.getElementById('user-id').value;
+            isAdmin = response.isAdmin;
+            
+            errorDiv.textContent = '';
+            showCollection();
+            // データ取得（ログイン時にサーバーから全データを取得していると仮定）
+            onDataLoaded(response.data); 
+        } else {
+            errorDiv.textContent = 'エラー: ' + response.message;
+        }
+    }
+
+    function onLoginFailure(error) {
+         document.getElementById('login-error').textContent = 'ログインリクエスト中にエラーが発生しました。';
+         console.error('Login Error:', error);
+    }
+    
+    // ----------------------------------------------------
+    // セクション表示制御
+    // ----------------------------------------------------
+    function showLogin() {
+        document.getElementById('login-section').style.display = 'block';
+        document.getElementById('collection-section').style.display = 'none';
+    }
+    
+    function showCollection() {
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('collection-section').style.display = 'block';
+        document.getElementById('welcome-message').textContent = `ようこそ、${userId}さん。`;
+        // データがまだロードされていない場合は再ロードを試みる
+        if (lanobeData.length === 0 && mangaData.length === 0) {
+            google.script.run.withSuccessHandler(onDataLoaded).getData();
+        }
+    }
+
+    // ----------------------------------------------------
+    // ハートビート / ログアウト処理
+    // ----------------------------------------------------
+    function handleHeartbeat() {
+        // ログイン状態を維持
+        google.script.run
+            .withSuccessHandler(response => {
+                if (response.status === 'ok') {
+                    showCollection();
+                } else {
+                    handleLogout(true);
+                }
+            })
+            .withFailureHandler(handleLogout)
+            .handleHeartbeat(userId, sessionToken);
+    }
+    
+    function handleLogout(noApiCall) {
+        localStorage.removeItem('sessionToken');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('isAdmin');
+        sessionToken = null;
+        userId = null;
+        isAdmin = false;
+        
+        if (!noApiCall) {
+            google.script.run.handleLogout(userId, sessionToken); // サーバー側でもセッションを無効化
+        }
+        
+        showLogin();
+    }
+
+
+    // ----------------------------------------------------
+    // データロード後の処理 (getData() の成功ハンドラ)
     // ----------------------------------------------------
     function onDataLoaded(data) {
-      lanobeData = data.lanobe;
-      mangaData = data.manga; // 漫画データを保持
+      // ログイン後に直接データが渡された場合、ここでセット
+      if (data.lanobe && data.manga) {
+          lanobeData = data.lanobe;
+          mangaData = data.manga; // 漫画データを保持
+      } else {
+          // ログインが別途行われた後のgetData()呼び出しの場合
+          lanobeData = data.lanobe;
+          mangaData = data.manga;
+      }
       
       // データ表示
       renderData('lanobe');
@@ -79,7 +215,7 @@
       const data = (dataType === 'lanobe') ? lanobeData : mangaData;
       const listContainer = document.getElementById(dataType + '-list');
       const summaryElement = document.getElementById(dataType + '-summary');
-      listContainer.innerHTML = ''; // クリア
+      listContainer.innerHTML = ''; 
       
       if (data.length < 2) {
         listContainer.innerHTML = '<p>データがありません。スプレッドシートを確認してください。</p>';
@@ -110,7 +246,6 @@
 
         const isLatestUnbought = latestBook[header.indexOf('購入未購入')] === '未所持';
         const latestVolume = parseVolume(latestBook[header.indexOf('作品名')]);
-        // 完結判定は簡易化またはデータシートの「完結」列に依存するため、ここでは全て「連載中」として表示
         const status = '連載中'; // 簡易表示
 
         html += `
@@ -132,7 +267,6 @@
     // ----------------------------------------------------
     function processSeries(bookEntries, header) {
       const titleIndex = header.indexOf('作品名');
-      const purchaseIndex = header.indexOf('購入未購入');
       const seriesMap = new Map();
 
       bookEntries.forEach(book => {
@@ -150,8 +284,6 @@
         }
         seriesMap.get(seriesName).books.push(book);
       });
-      
-      // 簡易的な完結判定は省略（外部データに依存するため）
 
       return seriesMap;
     }
@@ -192,7 +324,6 @@
       volume = parseVolume(fullTitle);
       
       // 4. その他のシリーズ名の正規化（長すぎるタイトルをベース名に）
-      // タイトルが長すぎる場合に、サブタイトルや修飾語を削除してベース名にする
       const baseTitles = [
           '継母の連れ子が元カノだった', '時々ボソッとロシア語でデレる隣のアーリャさん', 
           'お隣の天使様にいつの間にか駄目人間にされていた件', '教え子に脅迫されるのは犯罪ですか?'

@@ -33,12 +33,13 @@
         "author": "犬甘あんず",
         "illustrator": "塩こうじ",
         "label": "角川スニーカー文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+        "ownedVolumes": [
             {
                 "title": "好きな子のいもうと 1",
                 "code": ""
-            },
+            }
+        ],
+        "unownedVolumes": [
             {
                 "title": "好きな子のいもうと 2",
                 "code": ""

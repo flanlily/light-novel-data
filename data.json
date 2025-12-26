@@ -19,13 +19,13 @@
         "author": "雨宮むぎ",
         "illustrator": "kr木",
         "label": "角川スニーカー文庫",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+        "ownedVolumes": [
             {
                 "title": "SNSで超人気のコスプレイヤー、教室で見せる内気な素顔もかわいい 1",
                 "code": "あ - 14 / 2 - 1"
             }
-        ]
+        ],
+        "unownedVolumes": []
     },
     {
         "seriesName": "好きな子のいもうと",

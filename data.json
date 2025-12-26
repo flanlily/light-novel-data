@@ -907,16 +907,16 @@
     {
         "seriesName": "有名Vtuberの兄だけど、何故か俺が有名になっていた",
         "totalVolumeCount": 1,
-        "author": "",
-        "illustrator": "",
-        "label": "",
-        "ownedVolumes": [],
-        "unownedVolumes": [
+        "author": "茨木野",
+        "illustrator": "pon",
+        "label": "GA文庫",
+        "ownedVolumes": [
             {
                 "title": "有名Vtuberの兄だけど、何故か俺が有名になっていた #1 妹が配信を切り忘れた",
                 "code": ""
             }
-        ]
+        ],
+        "unownedVolumes": []
     },
     {
         "seriesName": "痴漢されそうになっているS級美少女を助けたら隣の席の幼馴染だった",

@@ -1,212 +1,115 @@
-<style>
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f7f6;
-  color: #333;
-  margin: 0;
-  padding: 0;
+
+/* Volumes Lists */
+.volumes-section {
+display: flex;
+gap: 15px;
+margin-top: auto; /* Push to bottom */
+font-size: 0.85rem;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+.vol-group {
+flex: 1;
 }
 
-h1 {
-  text-align: center;
-  color: #00796b;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 10px;
+.vol-group h3 {
+font-size: 0.8rem;
+text-transform: uppercase;
+color: var(--text-sub);
+border-bottom: 1px solid var(--border-color);
+padding-bottom: 4px;
+margin-bottom: 8px;
 }
 
-h2 {
-  color: #009688;
-  border-left: 5px solid #009688;
-  padding-left: 10px;
-  margin-top: 25px;
+.vol-group.owned h3 { color: #3fb950; }
+.vol-group.unowned h3 { color: #f85149; }
+
+.vol-group ul {
+list-style: none;
+max-height: 150px;
+overflow-y: auto;
+/* Custom Scrollbar */
+scrollbar-width: thin;
+scrollbar-color: var(--border-color) transparent;
 }
 
-.summary {
-  font-size: 1.1em;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #e0f2f1;
-  border-radius: 4px;
+.vol-group ul::-webkit-scrollbar {
+width: 4px;
+}
+.vol-group ul::-webkit-scrollbar-thumb {
+background-color: var(--border-color);
+border-radius: 4px;
 }
 
-/* ★★★ ログインセクションの調整 ★★★ */
-#login-section {
-    text-align: center;
-    padding: 30px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: 50px auto;
-}
-#login-form {
-    display: inline-block; /* フォームの幅を内容に合わせる */
-    text-align: left; /* フォーム内のテキストを左寄せに戻す */
-}
-#login-section h2 {
-    text-align: center;
-    border-left: none;
-    padding-left: 0;
-}
-.form-group {
-    margin-bottom: 15px;
-    /* ラベルとインプットをインラインで配置 */
-    display: block; 
-}
-.form-group label {
-    display: inline-block;
-    width: 80px; /* ラベルの幅を固定 */
-    text-align: right;
-    margin-right: 10px;
-}
-#login-section input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px; /* 入力欄の幅を固定 */
-}
-.error-message {
-    color: #f44336;
-    margin-bottom: 15px;
-}
-.submit-button {
-    padding: 10px 30px;
-    background-color: #009688;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-}
-.submit-button:hover {
-    background-color: #00796b;
+.vol-group li {
+padding: 2px 0;
+border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
-/* ヘッダーコントロール (ログイン後) */
-.header-controls {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 20px;
-}
-#welcome-message {
-    margin-right: 15px;
-    font-weight: bold;
-    color: #555;
-}
-.logout-button {
-    padding: 8px 15px;
-    cursor: pointer;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-.logout-button:hover {
-    background-color: #d32f2f;
+.vol-group li.none {
+color: var(--text-sub);
+font-style: italic;
+opacity: 0.5;
 }
 
-/* タブスタイル */
-.tabs {
-  display: flex;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #e0e0e0;
+/* Footer */
+footer {
+margin-top: 40px;
+padding: 20px 0;
+border-top: 1px solid var(--border-color);
+text-align: center;
+color: var(--text-sub);
+font-size: 0.9rem;
 }
 
-.tab-button {
-  background-color: #eee;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 4px 4px 0 0;
-  margin-right: 5px;
-  border: 1px solid #e0e0e0;
-  border-bottom: none;
+/* Mobile Responsive */
+/* Mobile Responsive Improvements */
+@media (max-width: 600px) {
+    /* グリッドを1列にする */
+.grid {
+grid-template-columns: 1fr;
+        gap: 15px; /* カード間の隙間を少し狭く */
 }
 
-.tab-button.active {
-  background-color: #009688;
-  color: #fff;
-  border-color: #009688;
-}
+    /* メインコンテンツの余白調整 */
+    main {
+        padding: 20px 15px;
+    }
 
-.tab-content {
-  display: none;
-}
+    /* ヘッダーの調整 */
+    header .container {
+        flex-direction: column; /* 縦並びにする */
+        align-items: stretch;   /* 横幅いっぱいに広げる */
+        gap: 15px;
+    }
 
-.tab-content.active {
-  display: block;
-}
+    /* タイトルを中央寄せ */
+    h1 {
+        text-align: center;
+        font-size: 1.3rem;
+    }
 
-/* データリストスタイル */
-.data-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
+    /* 検索ボックスのスマホ最適化 */
+.search-box input {
+width: 100%;
+        font-size: 16px; /* 16px以上にするとiPhoneで入力時にズームされなくなる */
+        padding: 10px;   /* タップしやすいように少し広く */
+    }
 
-.series-card {
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-left: 5px solid;
-  transition: transform 0.2s;
+    /* カード内の余白を少し詰めて情報量を見やすく */
+    .card {
+        padding: 15px;
+    }
+    
+    .card-header {
+        flex-direction: column; /* 長いタイトル対策 */
+        gap: 5px;
+    }
+    
+    .badge {
+        margin-left: 0;
+        align-self: flex-start; /* バッジを左寄せに */
 }
-
-.series-card:hover {
-  transform: translateY(-3px);
 }
-
-.series-card.ongoing {
-  border-left-color: #ff9800; /* オレンジ: 連載中 */
-  background-color: #fff3e0;
-}
-
-.series-card.completed {
-  border-left-color: #4caf50; /* 緑: 完結 */
-  background-color: #e8f5e9;
-}
-
-.series-card.unbought {
-  border-left-color: #f44336; /* 赤: 最新巻未購入 */
-  background-color: #ffebee;
-  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
-}
-
-.series-card h3 {
-  margin-top: 0;
-  color: #333;
-  font-size: 1.1em;
-}
-
-.series-card p {
-  margin: 5px 0;
-  font-size: 0.9em;
-}
-
-.series-card strong {
-  font-weight: 600;
-  color: #555;
-}
-
-.loading-message {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 30px;
-  font-size: 1.2em;
-  color: #999;
-}
-</style>

@@ -29,14 +29,22 @@
     },
     {
         "seriesName": "好きな子のいもうと",
-        "totalVolumeCount": 1,
+        "totalVolumeCount": 3,
         "author": "犬甘あんず",
         "illustrator": "塩こうじ",
-        "label": "",
+        "label": "角川スニーカー文庫",
         "ownedVolumes": [],
         "unownedVolumes": [
             {
                 "title": "好きな子のいもうと 1",
+                "code": ""
+            },
+            {
+                "title": "好きな子のいもうと 2",
+                "code": ""
+            },
+            {
+                "title": "好きな子のいもうと 3",
                 "code": ""
             }
         ]
